@@ -1,0 +1,11 @@
+<html>
+<head>
+<style> {
+	h1,p{
+		color: blue;
+		border: 5px solid black;
+		width: 100px;
+		height:50px;
+
+	}
+}
