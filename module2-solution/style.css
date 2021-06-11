@@ -44,7 +44,16 @@
 section{
 		color: white;
 		border: 5px solid red;
-		
+		clear: right;
+		margin-top: 10px;
+		background: grey;
+		float: right;
+
+	}
+#section1 #section2 #section3{
+		color: white;
+		border: 5px solid red;
+		clear: right;
 		margin-top: 10px;
 		background: grey;
 		float: right;
@@ -59,3 +68,4 @@ h1,h2,h3{
 p{padding: 10px;
 	float: right;
 }
+.column{float: right;}
