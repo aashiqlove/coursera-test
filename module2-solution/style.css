@@ -44,16 +44,17 @@
 section{
 		color: white;
 		border: 5px solid red;
-		clear: right;
+		
 		margin-top: 10px;
 		background: grey;
-		float: right;
+		float: left;
 
 	}
 h1,h2,h3{
-	float: right;
+	float: left;
 	padding: 0;
 	margin-top: 0;
 	border: 5px solid red;
 }
-p{padding: 10px;}
+p{padding: 10px;
+}
