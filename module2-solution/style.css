@@ -1,7 +1,7 @@
 *{
 	box-sizing: border-box;
 }
-@media (min-width: 1200px){
+@media (min-width: 980px){
 	.col-lg-1,.col-lg-2,.col-lg-3,.col-lg-4,.col-lg-5,.col-lg-6,
 	.col-lg-7,.col-lg-8,.col-lg-9,.col-lg-10,
 	.col-lg-11,.col-lg-12{
@@ -21,7 +21,7 @@
 	.col-lg-11{width: 91.63%}
 	.col-lg-12{width: 100%}
 }
-@media (min-width:980px)and (max-width: 1199px){
+@media (min-width:768px)and (max-width: 979px){
 	.col-md-1,.col-md-2,.col-md-3,.col-md-4,.col-md-5,
 	.col-md-6,
 	.col-md-7,.col-md-8,.col-md-9,.col-md-10,
@@ -51,7 +51,6 @@
 div{
 
 		color: black;
-		float:right;
 		border: 5px solid red;
 		margin-top:10px;
 		background: grey;
@@ -67,4 +66,6 @@ h1,h2,h3{
 p{padding: 10px;
 	
 }
-.column{width: 100%;}
+.column{
+	width: 100%;
+}
