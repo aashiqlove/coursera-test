@@ -1,17 +1,76 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>moduel2-solution</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
+<title>CAN WEEEEEEEEEEEE</title>
+<style>
+body{
+  background-color:pink; 
+}
+
+p{
+	margin-left:500px;
+	font-size:50px;
+
+}
+#botao1 {
+position: fixed;
+top: 80%;
+left: 55%;
+transform: translate(-50%, -50%);
+}
+#botao2 {
+position: absolute;
+ left: 39%;
+  top: 78%;
+}
+img {
+display: block;
+margin:  auto;
+width: 25%;
+}
+
+</style>
 </head>
 <body>
-<section class="row">
-	<div class="col-lg-4 col-md-6"><h1>chicken</h1><p>The chicken, a subspecies of the red junglefowl, is a type of domesticated fowl, originally from Southeastern Asia. Rooster or cock is a term for an adult male bird. A younger male may be called a cockerel; a male that has been castrated is a capon. The adult female bird is called a hen.</p></div></section>
-<section>
-	<div class="col-lg-4 col-md-6"><h2>Beef</h2><p>The chicken, a subspecies of the red junglefowl, is a type of domesticated fowl, originally from Southeastern Asia. Rooster or cock is a term for an adult male bird. A younger male may be called a cockerel; a male that has been castrated is a capon. The adult female bird is called a hen.</p></div></section>
-<section>
-	<div class="col-lg-4 col-md-12"><h3>sushi</h3><p>The chicken, a subspecies of the red junglefowl, is a type of domesticated fowl, originally from Southeastern Asia. Rooster or cock is a term for an adult male bird. A younger male may be called a cockerel; a male that has been castrated is a capon. The adult female bird is called a hen.</p></div>
-</section>
+
+<p>
+       can we go out....&#128513 ?
+</p>
+
+
+<img src="https://media.tenor.com/zGm5acSjHCIAAAAC/cat-begging.gif"
+ alt="plssssss">
+ 
+<button id="botao1">YES &#128525 &#128147</button>
+<button id="botao2">NO &#128552</button>
+
+<script >
+const button2 = document.getElementById('botao2');
+let left = 40;
+button2.addEventListener('mouseover', function() {
+  if(left == 40){
+    left = 44;
+  }else if(left ==44){
+    left = 33 ;
+  }
+  else{
+	  left=40;
+  }
+  
+  this.style.left = left + '%';
+});
+
+document.getElementById('botao1').addEventListener('click', function() {
+	 let myAnchor = document.createElement('a');
+     myAnchor.appendChild(botao1);
+     myAnchor.href = "friends.html";
+     document.body.appendChild(myAnchor);
+	});
+
+
+</script>
+
+
 
 </body>
 </html>
