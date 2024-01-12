@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+	<link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <header class="header">
+	  <div class="cub-logo"><img src="CUB-New-logo.jpg"> </div>
+	  <div class="header-div1"><img src="velanmai-title1.png" alt="tamil" border="0"></div>
+  	 <div class="velanmai-logo"><img src="trail-mage (1).png"> </div>
+  </header>
+  <div class="location">
+	  <div class="popup">
+			<div class = "icons">
+<div class = "notification">
+  <a href = "#">
+  <div class = "notBtn" href = "#">
+    <!--Number supports double digets and automaticly hides itself when there is nothing between divs -->
+    <div class = "number">2</div>
+    <i class="fas fa-bell"></i>
+      <div class = "box">
+        <div class = "display">
+          <div class = "nothing"> 
+            <i class="fas fa-child stick"></i> 
+            <div class = "cent">Looks Like your all caught up!</div>
+          </div>
+          <div class = "cont"><!-- Fold this div and try deleting evrything inbetween -->
+             <div class = "sec new">
+               <a href = "#">
+               <div class = "profCont">
+               <img class = "profile" src = "https://c1.staticflickr.com/5/4007/4626436851_5629a97f30_b.jpg">
+                </div>
+               <div class = "txt">notification1</div>
+              <div class = "txt sub">11/7 - 2:30 pm</div>
+               </a>
+            </div>
+             <div class = "sec new">
+               <a href = "#">
+               <div class = "profCont">
+               <img class = "profile" src = "https://obamawhitehouse.archives.gov/sites/obamawhitehouse.archives.gov/files/styles/person_medium_photo/public/person-photo/amanda_lucidon22.jpg?itok=JFPi8OFJ">
+                </div>
+               <div class = "txt">notification2</div>
+              <div class = "txt sub">11/7 - 2:13 pm</div>
+               </a>
+            </div>
+             <div class = "sec">
+               <a href = "#">
+               <div class = "profCont">
+               <img class = "profile" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3O45RK9qyCrZJivYsY6PmeVEJH07l7bkoolJmscBsNjzump27">
+                </div>
+               <div class = "txt">notification3</div>
+              <div class = "txt sub">11/6 - 9:35 pm</div>
+               </a>
+            </div>
+             <div class = "sec">
+               <a href = "#">
+               <div class = "profCont">
+               <img class = "profile" src = "https://c1.staticflickr.com/4/3725/10214643804_75c0b6eeab_b.jpg">
+                </div>
+               <div class = "txt">notification4"</div>
+              <div class = "txt sub">11/6 - 4:04 pm</div>
+               </a>
+            </div>
+            
+               </a>
+            </div>
+         </div>
+        </div>
+     </div>
+  </div>
+    </a>
+</div>
+
+		</div>
+		<p class="beta"><b>BETA*</b></p>
+		<div class="icon"><a href="index.html" >
+    						<div class="icon__home"><i class="ion-ios-home"></i></div>
+    	</a></div>
+    	<div class="lang-out">
+    	<div class="lang_dropdown">
+    		<button class="dropbtn">மொழி<i class="fa fa-caret-down"></i></button>
+    		<div class="dropdown-content">
+    			<a href="#">Tamil</a>
+    			<a href="https://krishisahayi.in/">Hindi</a>
+    			<a href="https://krishisahayi.in/malayalam">Malayalam</a>
+    		</div>
+    	</div>
+    	</div>
+	  
+	  
+	  <div id="lcname" align="center" style="height:5px; "></div><br>
+		<!--div id="chcplc" align="Center" style="height: 35px;">-->
+		<div id="chcplc" align="Center"> 
+			<label id="placename"><font id="font"><b>உங்களுக்கு தேவைப்படும் சந்தை இடத்தைத் தேர்ந்தெடுக்கவும்</b> </font></label>
+			<br><select name="apmcplace" id="apmcplace" onchange="getComboA(this)">
+			   <option value="currentGPS">தேர்ந்தெடுக்கவும் (Current Loc)</option>
+			<option value="ALANGUDI#10.4593096#78.7027302">ஆலங்குடி</option>
+			<option value="AMBASAMUTHIRAM#8.711232#77.449389">அம்பாசமுத்திரம்</option>
+			<option value="AMMOOR#12.9249606#79.3668505">அம்மூர்</option>
+			<option value="ANAIMALAI#10.5847477#76.9369355">ஆனைமலை</option>
+			<option value="ANNUR#11.2014671#77.2349899">அன்னூர்</option>
+			<option value="ANTHIYUR#11.5748588#77.5865973">அந்தியூர்</option>
+			<option value="ARANI#12.6668202#79.2706576">ஆரணி</option>
+			<option value="ARANTHANGI#10.1631#78.996201">அறந்தாங்கி</option>
+			<option value="ARCOT#12.9056446#79.3252376">ஆற்காடு</option>
+			<option value="ARUPPUKOTTAI#9.50278#78.05735">அருப்புக்கோட்டை</option>
+			<option value="ATTHUR#11.5869403#78.6178807">ஆத்தூர்</option>
+			<option value="AVALPOONDURAI#11.23435#77.72115">அவல்பூந்துறை</option>
+			<option value="AVALURPET#12.250306#79.416535">அவலூர்பேட்டை</option>
+			<option value="BATLAGUNDU#10.03015#78.0358">வத்தலகுண்டு</option>
+			<option value="BHAVANI#11.450007#77.683293">பவானி</option>
+			<option value="BODINAYAKANUR#10.0208443#77.3467399">போடிநாயக்கனூர்</option>
+			<option value="BOOTHAPADI#11.342243#77.7274689">பூதப்பாடி</option>
+			<option value="BUDALUR#10.7826#78.95455">பூதலூர்</option>
+			<option value="CHETPET#12.464433#79.347539">சேத்துப்பட்டு</option>
+			<option value="CHEYYAR#12.6630445#79.5367251">செய்யாறு</option>
+			<option value="CHINNAMANUR#9.8023121#77.3606369">சின்னமனூர்</option>
+			<option value="CHINNASALEM#11.649546#78.859863">சின்னசேலம்</option>
+			<option value="COIMBATORE#10.9934#76.94325">கோயம்புத்தூர்</option>
+			<option value="CUDDALOREOT#11.750018#79.749982">கடலூர்</option>
+			<option value="CUMBUM#10.02383#78.22352">கம்பம்</option>
+			<option value="DESUR#12.502865#79.605761">தேசூர்</option>
+			<option value="DEVAKOTTAI#9.9475466#78.8205643">தேவகோட்டை</option>
+			<option value="DHARMAPURI#12.1462091#78.1578583">தர்மபுரி</option>
+			<option value="DINDIGUL#10.3491857#77.9879389">திண்டுக்கல்</option>
+			<option value="EDAPPADI#11.5662#77.8396">எடப்பாடி</option>
+			<option value="ELUMATHUR#11.26265#77.77265">எழுமாத்தூர்</option>
+			<option value="ERODE#11.3649089#77.7480554">ஈரோடு</option>
+			<option value="GANGAVALLI#11.5662#77.8396">கெங்கவல்லி</option>
+			<option value="GINGEE#12.2541472#79.4164899">செஞ்சி</option>
+			<option value="GOBICHETTIPALAYAM#11.3642483#77.4554185">கோபிசெட்டிபாளையம்</option>
+			<option value="GOPALPATTI#10.0163663#77.9642771">கோபால் பட்டி</option>
+			<option value="GUDIYATHAM#12.9179463#78.8755409">குடியாத்தம்</option>
+			<option value="HARUR#12.046967#78.483273">ஹரூர்</option>
+			<option value="HOSUR#12.7212445#77.8079526">ஓசூர்</option>
+			<option value="ILUPPUR#10.512194#78.623923">இலுப்பூர்</option>
+			<option value="JEYANKONDAM#11.2071999#79.367602">ஜெயம்கொண்டம்</option>
+			<option value="KADAYANALLUR#9.0022176#77.2476065">கடையநல்லூர்</option>
+			<option value="KALAVAI#12.7674633#79.4169356">கலவை</option>
+			<option value="KALLAKURICHI#11.739325#78.962375">கள்ளக்குறிச்சி</option>
+			<option value="KAMUTHI#9.38343#78.31395">கமுதி</option>
+			<option value="KANCHEEPURAM#12.848627#79.70516">காஞ்சிபுரம்</option>
+			<option value="KANGEYAM#11.00599#77.5609">காங்கேயம்</option>
+			<option value="KARIKUDI#10.062707#78.7900282">காரைக்குடி</option>
+			<option value="KARUMANDURAI#11.8255537#78.6278915">கருமந்துறை</option>
+			<option value="KATTUMANNARKOIL#11.2600711#79.5544653">கட்டுமன்னர்கோயில்</option>
+			<option value="KILPENNATHUR#12.2252961#79.0746837">கீழ் பென்னதூர்</option>
+			<option value="KINATHUKADAVU#10.8203#77.00425">கிணத்துகடவு</option>
+			<option value="KODUMUDI#11.0656458#77.8785688">கொடுமுடி</option>
+			<option value="KONGANAPURAM#11.5607696#77.9084737">கொங்கணாபுரம்</option>
+			<option value="KOYAMBEDU#13.0694#80.1948">கோயம்பேடு </option>
+			<option value="KRISHNAGIRI#12.5249536#78.2080908">கிருஷ்ணகிரி</option>
+			<option value="KUDAVASAL#10.8631718#79.4787287">குடவாசல்</option>
+			<option value="KULASEKHARAM#8.2543714#77.3393285">குலசேகரம்</option>
+			<option value="KUMBAKONAM#10.9616945#79.3881132">கும்பகோணம்</option>
+			<option value="KURUNJIPADY#11.5955#79.59865">குறிஞ்சிப்பாடி</option>
+			<option value="KUTHALAM#10.8424#79.79105">குத்தாலம்</option>
+			<option value="LALGUDI#10.875319#78.8183035">லால்குடி</option>
+			<option value="MADATHUKULAM#10.5595839#77.3654611">மடத்துக்குளம்</option>
+			<option value="MADURAI#9.9599655#78.1349839">மதுரை</option>
+			<option value="MADURANTHAGAM#12.5102166#79.8849354">மதுராந்தகம்</option>
+			<option value="MANALURPET#12.01473#79.10187">மணலூர்பேட்டை</option>
+			<option value="MANAMADURAI#9.6901803#78.4521029">மானாமதுரை</option>
+			<option value="MANAPPARAI#10.4593016#78.7027382">மணப்பாறை</option>
+			<option value="MANNARKUDI#10.7713187#79.6369974">மன்னார்குடி</option>
+			<option value="MARAKKANAM#12.186952#79.927895">மரக்காணம்</option>
+			<option value="MAYILADUTHURAI#11.1014129#79.6744558">மயிலாடுதுறை</option>
+			<option value="MECHERI#11.8362039#77.9453668">மேச்சேரி</option>
+			<option value="MELUR#10.0336855#78.3358366">மேலூர்</option>
+			<option value="MOOLANUR#10.792987#77.708006">மூலனூர்</option>
+			<option value="MUDHUKALATHUR#9.3542083#78.5007537">முதுகுளத்தூர்</option>
+			<option value="NAMAGIRIPETTAI#11.4281568#78.2685402">நாமகிரிப்பேட்டை</option>
+			<option value="NATHAM#10.2175291#78.3578755">நத்தம்</option>
+			<option value="NEGAMAM#11.09735#77.3093">நெகமம்</option>
+			<option value="ODDANCHATRAM#10.45604#77.75114">ஒடடன்சத்திரம்</option>
+			<option value="OMALUR#11.740327#78.0439797">ஓமலூர்</option>
+			<option value="ORATHANADU#10.58745#79.2593">ஒரத்தநாடு</option>
+			<option value="PALACODE#12.3027104#78.0741888">பாலக்கோடு</option>
+			<option value="PALANI#10.3659711#77.9750828">பழனி</option>
+			<option value="PANRUTI#11.778624#79.5894832">பன்ருட்டி</option>
+			<option value="PAPANASAM#10.9232664#79.2688912">பாபநாசம்</option>
+			<option value="PARAMAKUDI#9.5460681#78.587774">பரமக்குடி</option>
+			<option value="PARAMATHI_VELUR#11.1486003#78.0124894">பரமத்தி வேலூர்</option>
+			<option value="PATTUKKOTTAI#10.4252814#79.3140301">பட்டுக்கோட்டை</option>
+			<option value="PAVOORCHATRAM#8.865761#77.497015">பாவூர்ச்சத்திரம்</option>
+			<option value="PERUMBALUR#11.2404097#78.8547142">பெரம்பலூர்</option>
+			<option value="PERUNDURAI#11.3391202#77.7105902">பெருந்துறை</option>
+			<option value="PETHAPPAMPATTI#10.67762#77.216085">பெதப்பம்பட்டி</option>
+			<option value="POCHAMPALLI#12.3831976#78.4113506">போச்சம்பள்ளி</option>
+			<option value="POLLACHI#10.65373#77.00835">பொள்ளாச்சி</option>
+			<option value="POLUR#12.4943985#79.1543735">போளூர்</option>
+			<option value="PONGALUR#11.26251#77.03912">பொங்கலூர்</option>
+			<option value="PUNJAI_PULIAMPADDI#11.3516#77.1667">புஞ்சை புளியம்பட்டி </option>
+			<option value="RAJAPALAYAM#9.4407754#77.5913176">ராஜபாளையம்</option>
+			<option value="RAJASINGAMANGALAM#9.780664#78.9214">ராஜசிங்கமங்கலம்</option>
+			<option value="RAMANATHAPURAM#9.37084#78.8287">ராமநாதபுரம்</option>
+			<option value="REDHILLS#13.3378381#80.1928933">செங்குன்றம்</option>
+			<option value="SALEM#11.6611115#78.1533734">சேலம்</option>
+			<option value="SANKARANKOVIL#9.1681736#77.525265">சங்கரன்கோயில்</option>
+			<option value="SANKARAPURAM#11.887289#78.916718">சங்கராபுரம்</option>
+			<option value="SATHYAMANGALAM#11.4929498#77.2794059">சத்தியமங்கலம்</option>
+			<option value="SATTUR#9.361723#77.9165611">சாத்தூர்</option>
+			<option value="SEMBANARKOIL#11.1051#79.7421">செம்பனார்கோயில்</option>
+			<option value="SENJERI_MALAIYADIPALAYAM#11.11005#76.9208">செஞ்சேரி மலையாண்டிபாளையம் </option>
+			<option value="SETHIATHOPE#11.275828#79.551532">சேத்தியாத்தோப்பு</option>
+			<option value="SEVUR#11.2464#77.2372">சேவூர்</option>
+			<option value="SINGAMPUNERI#10.2175231#78.3578815">சிங்கம்புணரி</option>
+			<option value="SIRKALI#11.2428165#79.7282161">சீர்காழி</option>
+			<option value="SIVAGANGAI#9.850009#78.499991">சிவகங்கை</option>
+			<option value="SIVAGIRI#9.3573371#77.4372004">சிவகிரி</option>
+			<option value="SRIMUSHNAM#11.275827#79.551533">ஸ்ரீமுஷ்ணம்</option>
+			<option value="SRIVAIKUNDAM#8.628852#77.912921">ஸ்ரீவைகுண்டம்</option>
+			<option value="SULUR#11.0126482#77.1937931">சூலூர்</option>
+			<option value="T_VADIPATTI#10.02383#78.22352">வாடிப்பட்டி</option>
+			<option value="TENKASI#8.9598406#77.3055111">தென்காசி</option>
+			<option value="THALAVADI#11.504784#77.2383862">தாளவாடி</option>
+			<option value="THAMMAMPATTI#11.448608#78.5023128">தம்மம்பட்டி</option>
+			<option value="THANJAVUR#10.7869994#79.1378274">தஞ்சாவூர்</option>
+			<option value="THENI#10.008839#77.4923747">தேனி</option>
+			<option value="THIRUKOVILUR#11.9674015#79.2027428">திருக்கோவிலூர்</option>
+			<option value="THIRUMANGALAM#9.81294#77.9974">திருமங்கலம்</option>
+			<option value="THIRUPATHUR#10.108477#78.59731">திருப்பத்தூர்</option>
+			<option value="THIRUPOONDI#10.6267662#79.8142568">திருப்பூண்டி</option>
+			<option value="THIRUPPUR#12.725957#80.189323">திருப்போரூர்</option>
+			<option value="THIRUVADANAI#9.783363#78.918278">திருவாடனை</option>
+			<option value="THIRUVALLUR#13.1405269#79.9064019">திருவள்ளூர்</option>
+			<option value="THIYAGADURAM#11.7441045#79.0729793">தியாகதுர்கம்</option>
+			<option value="THONDAMUTHUR#10.97455#76.86295">தொண்டாமுத்தூர்</option>
+			<option value="THURAIYUR#11.1414545#78.5944718">துறையூர்</option>
+			<option value="THUVARANKURICHY#10.606775#78.423073">துவரங்குறிச்சி</option>
+			<option value="TINDIVANAM#12.236884#79.649948">திண்டிவனம்</option>
+			<option value="TIRUCHIRAPALLI#10.80595#78.69665">திருச்சிராப்பள்ளி</option>
+			<option value="TIRUNELVELI#8.731395#77.708214">திருநெல்வேலி</option>
+			<option value="TIRUTTANI#13.1435215#79.8932108">திருத்தணி</option>
+			<option value="TIRUVARUR#10.7756475#79.6043282">திருவாரூர்</option>
+			<option value="UDUMALPET#10.58457#77.251446">உடுமலைபேட்டை</option>
+			<option value="ULUNDURPETTAI#11.6921612#79.2864166">உளுந்தூர்பேட்டை</option>
+			<option value="USILAMPATTI#9.96754#77.786711">உசிலம்பட்டி</option>
+			<option value="UTHIRAMERUR#12.635#79.76805">உத்திரமேரூர்</option>
+			<option value="VADAMADURAI#10.5116363#78.0596044">வடமதுரை</option>
+			<option value="VALANGAIMAN#10.8897397#79.3910058">வலங்கைமான்</option>
+			<option value="VALATHI#12.230737#79.655622">வளத்தி</option>
+			<option value="VALLIOOR#8.3798984#77.6233274">வள்ளியூர்</option>
+			<option value="VANDAVASI#12.5077136#79.606138">வந்தவாசி</option>
+			<option value="VANIYAMBADI#12.6950325#78.6218853">வாணியம்பாடி</option>
+			<option value="VAZHAPPADI#11.6492191#78.4024106">வாழப்பாடி</option>
+			<option value="VELLAKOIL#10.95425#77.68744">வெள்ளக்கோயில்</option>
+			<option value="VELLAMKOIL#11.342245#77.7274669">வெள்ளாங்கோவில்</option>
+			<option value="VELLORE#12.9086275#79.0638549">வேலூர்</option>
+			<option value="VETTAVALAM#12.2232311#79.0798639">வேட்டவலம்</option>
+			<option value="VIKIRAVANDI#12.0645#79.54175">விக்கிரவாண்டி</option>
+			<option value="VILLUPURAM#11.97005#79.50625">விழுப்புரம்</option>
+			<option value="VIRUDHACHALAM#11.5228084#79.324538">விருதாச்சலம்</option>
+			<option value="VIRUDHUNAGAR#9.5786392#77.9731392">விருதுநகர்</option>
+   		    	</select>
+			<br>	
+		</div>
+	  
+  </div>
+
+
+
+<div class="body">
+  <div class="container">
+    <div class="main-card">
+
+      <div class="cards">
+        <div class="card">
+         <div class="content">
+            <div class="heading"><h1><b>தானிய விலை</b></h1></div>
+            <div class="contentContainer contentContainer1"></div>
+           
+         </div>
+        </div>
+        <div class="card">
+         <div class="content">
+			 <div class="heading"><h1><b>இன்றைய செய்தி</b></h1></div>
+			 <div class="contentContainer contentContainer2"> </div>  
+			 <button class="prev" onclick="plusSlides(-1)">❮</button>
+    		 <button class="next" onclick="plusSlides(1)">❯</button>   
+         </div>
+        </div>
+        </div>
+      
+
+      <div class="cards">
+        <div class="card">
+         <div class="content"><div class="heading"><h1><b>காய்கறி விலை</b></h1></div>
+				<div class="contentContainer contentContainer3"></div>             
+         </div>
+        </div>
+        <div class="card">
+         <div class="content">
+			<div class="heading"><h1><b>வானிலை</b></h1></div>
+				<div class="contentContainer contentContainer4"></div>     
+         </div>
+        </div>
+      </div>
+
+         <div class="cards">
+        <div class="card">
+         <div class="content">	<div class="heading"><h1><b>விதை  இருப்பு</b></h1></div>
+				<div class="contentContainer contentContainer5"></div>             
+         </div>
+        </div>
+        <div class="card">
+         <div class="content">
+			 	<div class="heading"><h1><b>உரம் இருப்பு
+</b></h1></div>
+				<div class="contentContainer contentContainer6"></div>
+         </div>
+        </div>
+      </div>
+
+    </div>
+  
+  </div>
+    <div class="rol">
+			<div class="mic">
+				<a href="https://velanmaiuthavi.in/fpobotdemo/index_mb_ta_nfrv.html" >
+    						<div class="icon__mic"><i class="ion-android-microphone"></i></div>
+    			</a>
+    		</div></div>
+  
+   <button class="boxPrev" onclick="boxslide(-1)">❮</button>
+    		 <button class="boxNext" onclick="boxslide(1)">❯</i></button>   
+  
+
+  </div>
+ 
+ 
+  <script>
+let slideIndex = 1;
+var slideIndex1 = 1;
+var x = window.matchMedia("(min-width: 1024px) and (max-width: 1280px)");
+    var updateContent=function(element,tag,content) {
+		console.log(content);
+        document.querySelector(tag).innerHTML = `<img src="${content}">`;
+        
+        
+    }
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+  const slides = document.querySelectorAll('.slides img');
+  if (n > slides.length) { slideIndex = 1; }
+  if (n < 1) { slideIndex = slides.length; }
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = 'none';
+  }
+  slides[slideIndex - 1].style.display = 'block';
+}
+showSlides(slideIndex);
+
+
+function boxslide(n) {
+  showSlides1(slideIndex1 += n,x);
+}
+
+
+function showSlides1(n,x){
+	const slides = document.querySelector('.main-card');
+	const slides1 = document.querySelectorAll('.cards');
+	if(n>slides1.length){
+		slideIndex1=3;
+		n = 3;
+	}
+	else if(n<1){
+		slideIndex1=1;
+		n=1;
+	}
+	if(n==1){
+		if(x.matches){
+			slides.style.marginLeft='0%';
+		}else{
+		slides.style.marginLeft='0%';
+		}
+	}
+	if(n==2){
+		if(x.matches){
+			slides.style.marginLeft='-80%';
+		}else{
+		slides.style.marginLeft='-90%';
+		}
+	}
+	if(n==3){
+		if(x.matches){
+			slides.style.marginLeft='-160%';
+		}else{
+		slides.style.marginLeft='-180%';
+		}		
+	}
+}	
+showSlides1(slideIndex1,x);
+</script>
+<script type="text/javascript" src="./script.js"></script>
+  
+  
+</body>
+</html>
