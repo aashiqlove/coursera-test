@@ -641,7 +641,7 @@ table{
 
 
 @media all and  (max-width:600px){
-#mySidepanel,.openbtn{
+#mySidepanel,.openbtn,.roll{
   display: inline-block;
 }
 .beta{
