@@ -12,11 +12,93 @@
    </head>
 <body>
   <header class="header">
-	  <div class="cub-logo"><img src="CUB-New-logo.jpg"> </div>
-	  <div class="header-div1"><img src="velanmai-title1.png" alt="tamil" border="0"></div>
-  	 <div class="velanmai-logo"><img src="trail-mage (1).png"> </div>
+	  <div class="cub-logo"><img src="./logo/CUB-New-logo.jpg"> </div>
+	  <div class="header-div1"><img src="./logo/velanmai-title1.png" alt="tamil" border="0"></div>
+  	 <div class="velanmai-logo"><img src="./logo/trail-mage (1).png"> </div>
   </header>
   <div class="location">
+
+  	<div id="mySidepanel" class="sidepanel">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+    <a href="index.html">Home</a>
+    <a href="#" class="lang" onclick="toggleLangDropdown()">மொழி
+        <div class="ln-dropdown" id="langDropdown">
+            <a href="#">Tamil</a>
+            <a href="https://krishisahayi.in/">Hindi</a>
+            <a href="https://krishisahayi.in/malayalam">Malayalam</a>
+        </div>
+    </a>
+</div>
+
+<div class = "icons">
+<div class = "notification">
+  <a href = "#">
+  <div class = "notBtn" href = "#">
+    <!--Number supports double digets and automaticly hides itself when there is nothing between divs -->
+    <div class = "number">2</div>
+    <i class="fas fa-bell"></i>
+      <div class = "box">
+        <div class = "display">
+          <div class = "nothing"> 
+            <i class="fas fa-child stick bell"></i> 
+            <div class = "cent">Looks Like your all caught up!</div>
+          </div>
+          <div class = "cont"><!-- Fold this div and try deleting evrything inbetween -->
+             <div class = "sec new">
+               <a href = "#">
+               <div class = "profCont">
+               <img class = "profile" src = "https://c1.staticflickr.com/5/4007/4626436851_5629a97f30_b.jpg">
+                </div>
+               <div class = "txt">notification1</div>
+              <div class = "txt sub">11/7 - 2:30 pm</div>
+               </a>
+            </div>
+             <div class = "sec new">
+               <a href = "#">
+               <div class = "profCont">
+               <img class = "profile" src = "https://obamawhitehouse.archives.gov/sites/obamawhitehouse.archives.gov/files/styles/person_medium_photo/public/person-photo/amanda_lucidon22.jpg?itok=JFPi8OFJ">
+                </div>
+               <div class = "txt">notification2</div>
+              <div class = "txt sub">11/7 - 2:13 pm</div>
+               </a>
+            </div>
+             <div class = "sec">
+               <a href = "#">
+               <div class = "profCont">
+               <img class = "profile" src = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3O45RK9qyCrZJivYsY6PmeVEJH07l7bkoolJmscBsNjzump27">
+                </div>
+               <div class = "txt">notification3</div>
+              <div class = "txt sub">11/6 - 9:35 pm</div>
+               </a>
+            </div>
+             <div class = "sec">
+               <a href = "#">
+               <div class = "profCont">
+               <img class = "profile" src = "https://c1.staticflickr.com/4/3725/10214643804_75c0b6eeab_b.jpg">
+                </div>
+               <div class = "txt">notification4"</div>
+              <div class = "txt sub">11/6 - 4:04 pm</div>
+               </a>
+            </div>
+            
+               </a>
+            </div>
+         </div>
+        </div>
+     </div>
+  </div>
+    </a>
+</div>
+<button class="openbtn" onclick="openNav()">☰</button>
+
+
+
+
+
+
+
+
+  	<div class="nav">
 	  <div class="popup">
 			<div class = "icons">
 <div class = "notification">
@@ -28,7 +110,7 @@
       <div class = "box">
         <div class = "display">
           <div class = "nothing"> 
-            <i class="fas fa-child stick"></i> 
+            <i class="fas fa-child stick bell"></i> 
             <div class = "cent">Looks Like your all caught up!</div>
           </div>
           <div class = "cont"><!-- Fold this div and try deleting evrything inbetween -->
@@ -79,7 +161,7 @@
 </div>
 
 		</div>
-		<p class="beta"><b>BETA*</b></p>
+		
 		<div class="icon"><a href="index.html" >
     						<div class="icon__home"><i class="ion-ios-home"></i></div>
     	</a></div>
@@ -94,7 +176,8 @@
     	</div>
     	</div>
 	  
-	  
+	</div><!-- nav -->  
+	<p class="beta"><b>BETA*</b></p>
 	  <div id="lcname" align="center" style="height:5px; "></div><br>
 		<!--div id="chcplc" align="Center" style="height: 35px;">-->
 		<div id="chcplc" align="Center"> 
@@ -334,7 +417,86 @@
   
 
   </div>
- 
+ <div class="body1">
+ <div class="slider">
+            <div class="item">
+                <div class="heading"><h1><b>தானிய விலை</b></h1></div>
+                <div class="contentContainer contentContainer1"></div>
+            </div>
+            <div class="item">
+               <div class="heading"><h1><b>இன்றைய செய்தி</b></h1></div>
+                <div class="contentContainer contentContainer2"></div>
+                <button class="prev" onclick="plusSlides(-1)">❮</button>
+    		 <button class="next" onclick="plusSlides(1)">❯</button>
+
+            </div>
+            <div class="item">
+                <div class="heading"><h1><b>காய்கறி விலை</b></h1></div>
+                <div class="contentContainer contentContainer3"></div>
+            </div>
+            <div class="item">
+                <div class="heading"><h1><b>வானிலை</b></h1></div>
+                <div class="contentContainer contentContainer4"></div>
+            </div>
+            <div class="item">
+                <div class="heading"><h1><b>விதை  இருப்பு</b></h1></div>
+                <div class="contentContainer contentContainer5"></div>
+            </div>
+            <div class="item">
+                <div class="heading"><h1><b>உரம் இருப்பு
+</b></h1></div>
+               <div class="contentContainer contentContainer6"></div>
+            </div>
+            <button id="next">></button>
+            <button id="prev"><</button>
+        </div>
+    </div>
+     <div class="rol">
+			<div class="mic">
+				<a href="https://velanmaiuthavi.in/fpobotdemo/index_mb_ta_nfrv.html" >
+    						<div class="icon__mic"><i class="ion-android-microphone"></i></div>
+    			</a>
+    		</div></div>
+
+ <script type="text/javascript">
+	let items = document.querySelectorAll('.slider .item');
+    let next = document.getElementById('next');
+    let prev = document.getElementById('prev');
+    
+    let active = 0;
+    function loadShow(){
+        let stt = 0;
+        items[active].style.transform = `none`;
+        items[active].style.zIndex = 1;
+        items[active].style.filter = 'none';
+        items[active].style.opacity = 1;
+        for(var i = active + 1; i < items.length; i++){
+            stt++;
+            items[i].style.transform = `translateX(${120*stt}px) scale(${1 - 0.2*stt}) perspective(16px) rotateY(-1deg)`;
+            items[i].style.zIndex = -stt;
+            items[i].style.filter = 'blur(5px)';
+            items[i].style.opacity = stt > 2 ? 0 : 0.6;
+        }
+        stt = 0;
+        for(var i = active - 1; i >= 0; i--){
+            stt++;
+            items[i].style.transform = `translateX(${-120*stt}px) scale(${1 - 0.2*stt}) perspective(16px) rotateY(1deg)`;
+            items[i].style.zIndex = -stt;
+            items[i].style.filter = 'blur(5px)';
+            items[i].style.opacity = stt > 2 ? 0 : 0.6;
+        }
+    }
+    loadShow();
+    next.onclick = function(){
+        active = active + 1 < items.length ? active + 1 : active;
+        loadShow();
+    }
+    prev.onclick = function(){
+        active = active - 1 >= 0 ? active - 1 : active;
+        loadShow();
+    }
+
+</script>
  
   <script>
 let slideIndex = 1;
@@ -346,29 +508,36 @@ var x = window.matchMedia("(min-width: 1024px) and (max-width: 1280px)");
         
         
     }
-
+var y = window.matchMedia("(min-width: 820px) and (max-width: 1024px)");
+var z = window.matchMedia("(min-width: 450px) and (max-width: 820px)");
+     
 function plusSlides(n) {
   showSlides(slideIndex += n);
 }
 
 function showSlides(n) {
-  const slides = document.querySelectorAll('.slides img');
+  const slides = document.querySelectorAll('.content .div2 .slides img');
+  const slidei = document.querySelectorAll('.item .div2 .slides img');
+  console.log(slides.length);
   if (n > slides.length) { slideIndex = 1; }
   if (n < 1) { slideIndex = slides.length; }
   for (let i = 0; i < slides.length; i++) {
     slides[i].style.display = 'none';
+    slidei[i].style.display = 'none';
   }
   slides[slideIndex - 1].style.display = 'block';
+  slidei[slideIndex - 1].style.display = 'block';
 }
 showSlides(slideIndex);
 
 
 function boxslide(n) {
-  showSlides1(slideIndex1 += n,x);
+	console.log(y);
+  showSlides1(slideIndex1 += n,x,y);
 }
 
 
-function showSlides1(n,x){
+function showSlides1(n){
 	const slides = document.querySelector('.main-card');
 	const slides1 = document.querySelectorAll('.cards');
 	if(n>slides1.length){
@@ -382,21 +551,40 @@ function showSlides1(n,x){
 	if(n==1){
 		if(x.matches){
 			slides.style.marginLeft='0%';
-		}else{
+		}else if(y.matches){
+			slides.style.marginLeft='5%';
+		}
+		else if(z.matches){
+			slides.style.marginLeft='5%';
+		}
+
+		else{
 		slides.style.marginLeft='0%';
 		}
 	}
 	if(n==2){
 		if(x.matches){
 			slides.style.marginLeft='-80%';
-		}else{
+		}else if(y.matches){
+			slides.style.marginLeft='-90%';
+		}
+		else if(z.matches){
+			slides.style.marginLeft='-100%';
+		}
+		else{
 		slides.style.marginLeft='-90%';
 		}
 	}
 	if(n==3){
 		if(x.matches){
 			slides.style.marginLeft='-160%';
-		}else{
+		}else if(y.matches){
+			slides.style.marginLeft='-170%';
+		}
+		else if(z.matches){
+			slides.style.marginLeft='-190%';
+		}
+		else{
 		slides.style.marginLeft='-180%';
 		}		
 	}
@@ -404,7 +592,20 @@ function showSlides1(n,x){
 showSlides1(slideIndex1,x);
 </script>
 <script type="text/javascript" src="./script.js"></script>
-  
+  <script>
+function toggleLangDropdown() {
+    var langDropdown = document.getElementById("langDropdown");
+    langDropdown.style.display = (langDropdown.style.display === "block") ? "none" : "block";
+}
+
+function openNav() {
+  document.getElementById("mySidepanel").style.width = "250px";
+}
+
+function closeNav() {
+  document.getElementById("mySidepanel").style.width = "0";
+}
+</script>
   
 </body>
 </html>
