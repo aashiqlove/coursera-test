@@ -556,7 +556,7 @@ button.boxPrev{
 .body1{
   display: none;
 }
-#mySidepanel,.openbtn{
+#mySidepanel,.openbtn,.roll{
   display: none;
 }
 
@@ -848,8 +848,8 @@ table {
   font-size:7px; 
   top: 20px;
   left: 50px;
-
 }
+
 .rol{
 bottom:100px; 
 }
@@ -858,9 +858,6 @@ bottom:100px;
 
 
 @media all and  (max-width:450px){
-.rol{
-bottom:100px; 
-}
 #font{
   font-size: 10px;
 }
