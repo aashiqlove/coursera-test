@@ -850,11 +850,17 @@ table {
   left: 50px;
 
 }
+.rol{
+bottom:100px; 
+}
 
 }
 
 
 @media all and  (max-width:450px){
+.rol{
+bottom:100px; 
+}
 #font{
   font-size: 10px;
 }
