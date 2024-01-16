@@ -6,8 +6,18 @@
   box-sizing: border-box;
   font-family: 'Poppins',sans-serif;
 }
-body{
-	background-color: rgb(255, 255, 255);
+body {
+  background-color: rgb(255, 255, 255);
+}
+body::-webkit-scrollbar {
+  height: 0; 
+}
+body::-webkit-scrollbar-thumb {
+  background-color: transparent; 
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent; 
 }
 .body{
 	margin-top: 60px;
@@ -37,6 +47,7 @@ body{
 .container{
 	
   max-width: 1150px;
+  width: auto;
   min-height: 450px;
   width: 100%;
   overflow: hidden;
@@ -55,28 +66,29 @@ body{
   margin-left: -180%;
 }
 .container .main-card .cards{
-  height: 450px;
+  
   width: calc(100% / 1 - 10px);
   display: flex;
   margin: 0 20px;
   justify-content: space-between;
+
 }
-.main-card .cards .card{
-
+.main-card .cards .card {
   width: calc(100% / 2 - 10px);
-
+  height: 450px;
   background: white;
   border-radius: 12px;
   padding: 0 10px 0 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.4s ease;
   overflow: scroll;
-  box-shadow: 2px 2px 10px black,-2px -2px 10px lightgray,-2px 2px 10px lightgray,2px -2px 10px lightgray;
-	&::-webkit-scrollbar {
-	  display: none;
-	}
-
+  box-shadow: 2px 2px 10px black, -2px -2px 10px lightgray, -2px 2px 10px lightgray, 2px -2px 10px lightgray;
 }
+
+.cards:hover .card:not(:hover),.main-card:hover .cards:not(:hover){
+  filter: blur(4px);
+}
+
 .main-card .cards .card:hover{
   transform: translateY(-15px);
 }
@@ -99,7 +111,7 @@ body{
 	height: 100%;
 	display: grid;
 	justify-content: center;
-	
+	align-items: center;
 	margin-bottom: 10px;
 }
 .con-img img{
@@ -500,11 +512,11 @@ button.prev, button.next {
 }
 
 button.prev {
-  left: 10px;
+  left: -15px;
 }
 
 button.next {
-  right: 10px;
+  right: -15px;
 }
 
 
@@ -541,6 +553,12 @@ button.boxPrev{
 }
 
 
+.body1{
+  display: none;
+}
+#mySidepanel,.openbtn{
+  display: none;
+}
 
 
 @media all and (min-width: 1024px) and (max-width: 1280px) {
@@ -562,55 +580,275 @@ button.boxPrev{
 	.container{
 		 max-width: 850px;
 	}
+  .lang-out{
+    left: 60px;
+  }
 	
 	#font{
 		font-size: 15px;
 	}
+  .header-div1 img{
+    width: 400px;
+  }
 }
  
-@media all and (max-width: 820px) { 
-	.container .main-card{
-		width: 130em;
-	}
-	.container{
-		 max-width: 700px;
-	}
-	#font{
-		font-size: 15px;
-	}
-	.heading{
-		font-size: 12px;
-	}
-	.content{
-		max-width: 200px;
-		display: grid;
-		justify-content: center;
-		
-	}
-	.card{
-		display: grid;
-		justify-content: center;
-	}
+@media all and  (min-width:600px)and (max-width: 820px) { 
 
-	td,th,table{
-		
-		font-size: 12px;
-	}
-	.container .main-card .cards{
-		width: 700px;
-	flex-wrap: wrap;}
-	.cub-logo img{
-		height:65px;
-	}
-	.header-div1 img{
-		width: 400px;
-	}
-	.lang-out{
-		top:2px !important;
-	left:50px !important;
-	}
-	
+.container .main-card{
+    max-width: 135em;
+  }
+
+
+
+.heading h1{
+  font-size: 22px;
 }
- 
+table, td, th{
+  
+  font-size: 12px;
+}
+table{
+   margin-left: auto;
+  margin-right: auto;
+}
 
-	
+.slides{
+  width: auto;
+}
+.header{
+  height: 70px;
+}
+.cub-logo img{
+  width: 150px;
+  height: 70px;
+}
+.header-div1 img{
+  width:300px;
+  height:;
+}
+.velanmai-logo img{
+  width: 70px;
+  height: 70px;
+}
+#font{
+  font-size: 12px;
+}
+.lang-out{
+  left: 40px;
+}
+
+}
+
+
+@media all and  (max-width:600px){
+#mySidepanel,.openbtn{
+  display: inline-block;
+}
+.beta{
+  font-size: 7px;
+  top:0px;
+  right: 0px; 
+}
+
+
+  .cub-logo img{
+    width:150px;
+    height:70px;  
+  }
+  .header-div1 img{
+    width: 200px;
+    height: 50px;
+  }
+  .velanmai-logo img{
+    width:75px;
+    height: 75px; 
+  }
+  
+#font{
+  font-size: 11px;
+  color: black;
+}
+.area{
+  color: maroon;
+}
+
+#apmcplace{
+  width: 250px;
+  height: 40px;
+  font-size:  12px ;
+  border-radius: 25px;
+  text-align: center;
+  font-family:'Comic Sans MS', cursive ;
+  background-color: darkslategray;
+  color: white;
+}
+.content{
+  font-size: 12px;
+}
+
+.con-img img{
+  width: 300px;
+}
+
+.body{
+  display: none;
+}
+.body1{
+  margin-top: 60px;
+  padding: 10px 0 0 0;
+  width: 100%;
+  height: 100%;
+  min-height: 80vh;
+  background: transparent;
+  position: relative;
+  display: grid;
+  justify-content: center;
+
+}
+.body1::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  background: #e00d7e;
+  clip-path: inset(37% 0 0 0);
+  z-index: -1;
+  height: 100%;
+}
+::selection{
+  background: #FF676D;
+  color: #fff;
+}
+.body1{
+    display: block;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: monospace;
+}
+.slider{
+    position: relative;
+    width: 100%;
+    height: 550px;
+    overflow: hidden;
+}
+.item{
+    margin-top: 10px;
+    position: absolute;
+    width: 350px;
+    height: 450px;
+    text-align: justify;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    transition: 0.5s;
+    left: calc(35% - 110px);
+    right:calc(35% - 110px);
+    top: 0;
+    box-shadow: 2px 2px 10px black, -2px -2px 10px lightgray, -2px 2px 10px lightgray, 2px -2px 10px lightgray;
+    overflow: scroll;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+#next, #prev{
+    position: absolute;
+    top: 40%;
+    color: black;
+    background-color: transparent;
+    border: none;
+    font-size: xxx-large;
+    font-family: monospace;
+    font-weight: bold;
+    left: 40px;
+    z-index: 999;
+}
+#next{
+    left: unset;
+    right: 40px;
+}
+.heading h1{
+  font-size: 25px;
+  text-align: center;
+}
+table {
+  font-size: 13px;
+}
+
+.nav{
+  display: none;
+}
+
+.sidepanel  {
+  width:0   ;
+  position: fixed;
+  height: 200px;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.4s;
+  padding-top: 20px;
+  z-index:333; 
+}
+
+.sidepanel a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 15px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidepanel a:hover {
+  color: #f1f1a1;
+}
+
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+}
+
+.openbtn {
+  position:absolute;
+  font-size: 20px;
+  cursor: pointer;
+  color: black;
+  padding: 5px 10px;
+  border: none;
+}
+
+.openbtn:hover {
+  background-color:#444;
+}
+.ln-dropdown{
+  display: none;
+  background: white;
+  
+}
+.ln-dropdown a{
+  color: black;
+  &:hover{
+    color:rgba(311,153,12,214);
+  }
+}
+.icons{
+ top: -10px;
+ right: -25px;
+}
+.fas{
+  font-size: 15pt;
+}
+.number{
+  height: 15px;
+  width:  15px;
+  font-size:7px; 
+  top: 20px;
+  left: 50px;
+
+}
+
+}
