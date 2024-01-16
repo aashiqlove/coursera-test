@@ -593,6 +593,20 @@ showSlides1(slideIndex1,x);
 </script>
 <script type="text/javascript" src="./script.js"></script>
   <script>
+var v = window.matchMedia("(max-width: 450px)");
+
+function handleMatches(event) {
+  var image = document.querySelector('.cub-logo img');
+  if (event.matches) {
+    image.src = "./logo/logo.png";
+  } else {
+    image.src = "./logo/CUB-New-logo.jpg";
+  }
+}
+
+v.addListener(handleMatches); // Adding a listener for changes in media query matches
+handleMatches(v); // Initial check for the current state
+
 function toggleLangDropdown() {
     var langDropdown = document.getElementById("langDropdown");
     langDropdown.style.display = (langDropdown.style.display === "block") ? "none" : "block";
