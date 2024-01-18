@@ -53,7 +53,6 @@ var res = document.getElementById("latloninp");
         function getComboA(selectObject) {
         
  		var plcvalue = selectObject.value;
- 		console.log(plcvalue);
  		boxarea(plcvalue);
 		// if(plcvalue.includes("currentGPS")){
 		// 	getLocation();
@@ -67,7 +66,7 @@ function boxarea(plcvalue){
 	var s=plcvalue;
 	const s1 =s.split("#");
 	const val =s1[0].toLowerCase();
-	console.log(val);
+
 	fetch("./Widgets-Details-forNewSite/"+val+".html")
     .then(response => {
       
@@ -95,7 +94,6 @@ function boxarea(plcvalue){
         const contentContainer5 = document.querySelectorAll('.contentContainer5');
         const contentContainer6 = document.querySelectorAll('.contentContainer6');
         
- console.log(basicDetailsDiv1.outerHTML);
         
         if (basicDetailsDiv1,basicDetailsDiv2,basicDetailsDiv3,basicDetailsDiv4,basicDetailsDiv5,basicDetailsDiv6) {
            contentContainer1.forEach(container => {
