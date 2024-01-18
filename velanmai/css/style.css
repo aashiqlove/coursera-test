@@ -84,6 +84,7 @@ tr:nth-child(odd){
   margin: 0 40px;
   overflow: hidden;
   border-radius: 5px;
+  padding:10px; 
 
 }
 .card{
@@ -91,7 +92,8 @@ tr:nth-child(odd){
   height: 450px;
   border-radius: 15px;
   background-color: #FFF;
-  overflow-y: scroll;
+  box-shadow: 2px 2px 9px graytext,-2px -2px 9px black,-2px 2px 9px black,2px -2px 9px black;
+  overflow-y:scroll;
 }
 
 .swiper-navBtn{
@@ -709,19 +711,29 @@ table {
     width:70px;
     height: 70px; 
   }
-
+table {
+  font-size: 11px;
+}
 
 .heading h1{
   font-size:20px; 
 }
-
+#lcname{
+	margin: 10px 30px;
+}
+.con-img img{
+	width:100%;
+	height: 200px;
+	min-height:100px;
+	min-width: 150px ;
+}
 }
 
 
 
 @media screen and (max-width: 768px) {
   .slide-content{
-    margin: 0 10px;
+    
   }
   .swiper-navBtn{
     
