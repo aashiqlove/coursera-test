@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdminPage</title>
+ 
+  <style>
+    *{
+      margin: 0px;
+      padding: 0;
+      box-sizing:border-box;
+    }
+    .topcontainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+    background-color: #7AA2E3;
+    padding: 0 20px; /* Add padding for spacing */
+}
+
+.au_img img {
+    width: clamp(50px, 50%, 150px);
+}
+
+.title_page {
+    text-align: center;
+    flex-grow: 1; /* Allow the title to expand and take remaining space */
+}
+
+.buttons_2 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      margin-left: 30%;
+      text-align: center;
+      height:100px;
+      width:500px;
+    }
+    .upload-btn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .upload-btn:hover {
+      background-color: #45a049;
+    }
+    
+    .assignments{
+      width:100%;
+      margin-top: 20px;
+      min-height: 500px;
+      border-radius: 20px;
+      background: #fff;
+      padding:10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border:1px solid #dddddd;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #dddddd;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    select {
+      padding: 8px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+    select option {
+      padding: 8px;
+      border-radius: 4px;
+    }
+    
+    /* Modal styles */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 1; /* Sit on top */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      padding-top: 60px;
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 5% auto; /* 5% from the top and centered */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 40%; /* Could be more or less, depending on screen size */
+    }
+
+    /* Close button */
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* Toggle button */
+    .toggle-btns {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .toggle-btn {
+      background-color: #ccc;
+      color: #333;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 0 10px;
+    }
+
+    .toggle-btn.active {
+      background-color: #4CAF50;
+      color: white;
+    }
+	/* Style for input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+/* Style for submit button*/
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background-color: #45a049;
+}
+	
+  </style>
+</head>
+<body>
+  <div class="topcontainer">
+    <div class="au_img">
+        <!-- Add your image here -->
+        <img src="anna_university.png" alt="Your Image">
+    </div>
+    <div class="title_page">
+        <h1>AUTHORING INTERFACE</h1>
+        <h4>Language Communication For End User</h4>
+        <h4>AU-KBC Reserach Centre</h4>
+    </div>
+    <div class="buttons_2">
+        <button onclick="openModal('registrationModal')">Registration</button>
+        <button id="logoutButton">Logout</button>
+    </div>
+</div>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('registrationModal')">&times;</span>
+        <div class="toggle-btns">
+        <button class="toggle-btn" id="userToggle" onclick="toggleRegistration('user')">User Registration</button>
+        <button class="toggle-btn active" id="adminToggle" onclick="toggleRegistration('admin')">Admin Registration</button>
+        
+        </div>
+        
+        <div id="userRegistration" style="display: none;">
+  <h2>User Registration</h2>
+  <form>
+    <input type="text" id="userUsername" name="userUsername" placeholder="Username"><br>
+    <input type="email" id="userEmail" name="userEmail" placeholder="Email"><br>
+    <input type="password" id="userPassword" name="userPassword" placeholder="Password"><br>
+    <input type="text" id="userPhone" name="userPhone" placeholder="Phone Number"><br>
+    <button type="button" onclick="sendUserData()">User Register</button>
+  </form>
+</div>
+
+<div id="adminRegistration" style="display: block;">
+  <h2>Admin Registration</h2>
+  <form>
+    <input type="text" id="adminUsername" name="adminUsername" placeholder="Username"><br>
+    <input type="email" id="adminEmail" name="adminEmail" placeholder="Email"><br>
+    <input type="password" id="adminPassword" name="adminPassword" placeholder="Password"><br>
+    <input type="text" id="adminPhone" name="adminPhone" placeholder="Phone Number"><br>
+    <button type="button" onclick="sendAdminData()">Admin Register</button>
+  </form>
+</div>
+
+      </div>
+    </div>
+    <!-- End Registration Modal -->
+
+    <div class="container" id="contain1">
+        <h2>Upload a File</h2>
+        <form>
+            <input type="file" id="fileInput" name="file">
+            <button type="button" class="upload-btn" onclick="uploadFile()">Ready to Assign</button>
+        </form>
+    </div>
+    
+        <!--<div>
+            <button id="refreshButton">Refresh Data</button>
+        </div>-->
+        
+        
+    <div class="assignments">
+        <table>
+            <tr>
+                <th>SNo</th>
+                <th>File Name</th>
+                <th>Processing</th>
+                <th>Assigned To</th>
+                <th>Sentence Assigned</th>
+                <th>Line Assigned</th>
+                <th>Status</th>
+                <th>Add more</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+    let storedData = [];
+    let selectedLineNumbers = [];
+    let classificationNames = ["A", "B", "C", "D", "E", "F", "G", "H"];
+    let fileContent = "";
+    let sentenceIds = []; // New array to store sentence IDs
+    let asassa="";
+    var aaq = 1;
+
+    // Fetch initial data from ad_data.json
+    (() => {
+      fetch('./AdminServletDb')
+        .then(response => response.json())
+        .then(data => {
+          console.log('Fetched data:', data);
+          storedData = data;
+          fetchDataAndPopulateTable();
+        })
+        .catch(error => console.error('Error fetching initial data:', error));
+    })();
+    
+    function sendUserData() {
+        let u_username = document.querySelector("#userUsername").value;
+        let u_email = document.querySelector("#userEmail").value;
+        let u_password = document.querySelector("#userPassword").value;
+        let u_phone = document.querySelector("#userPhone").value;
+        let findMember = "User";
+
+        console.log(u_username);
+        console.log(u_email);
+        console.log(u_password);
+        console.log(u_phone);
+        console.log(findMember);
+
+        fetch('./ValidateServlet', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `id=${encodeURIComponent("1")}&u_username=${encodeURIComponent(u_username)}&u_email=${encodeURIComponent(u_email)}&u_password=${encodeURIComponent(u_password)}&u_phone=${encodeURIComponent(u_phone)}&findMember=${encodeURIComponent(findMember)}`
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log('Received data:', data);
+            // Display alert
+            alert('User Data successfully Registered!');
+            // Clear input fields
+            document.querySelector("#userUsername").value = '';
+            document.querySelector("#userEmail").value = '';
+            document.querySelector("#userPassword").value = '';
+            document.querySelector("#userPhone").value = '';
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+
+    function sendAdminData() {
+        let a_username = document.querySelector("#adminUsername").value;
+        let a_email = document.querySelector("#adminEmail").value;
+        let a_password = document.querySelector("#adminPassword").value;
+        let a_phone = document.querySelector("#adminPhone").value;
+        let findMember = "Admin";
+
+        console.log(a_username);
+        console.log(a_email);
+        console.log(a_password);
+        console.log(a_phone);
+        console.log(findMember);
+
+        fetch('./ValidateServlet', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `id=${encodeURIComponent("2")}&a_username=${encodeURIComponent(a_username)}&a_email=${encodeURIComponent(a_email)}&a_password=${encodeURIComponent(a_password)}&a_phone=${encodeURIComponent(a_phone)}&findMember=${encodeURIComponent(findMember)}`
+        })
+        .then(response => response.text())
+		.then(data => {
+            console.log('Received data:', data);
+            // Display alert
+            alert('Admin Data successfully Registered!');
+            // Clear input fields
+            document.querySelector("#adminUsername").value = '';
+            document.querySelector("#adminEmail").value = '';
+            document.querySelector("#adminPassword").value = '';
+            document.querySelector("#adminPhone").value = '';
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    
+    function uploadFile() {
+      aaq = 1;
+      const fileInput = document.getElementById('fileInput');
+      const fileName = fileInput.files[0]?.name;
+      if (fileName) {
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+          const selectName = fileName;
+          fileContent = event.target.result;
+
+       // Correct pattern when newline occurs between </sent_id> and <sent_id
+	      fileContent = fileContent.replace(/<\/sent_id>\s*\n\s*<sent_id/g,"</sent_id>.&#<sent_id");
+		
+	      // Replace tab spaces with \t and remove remaining newlines
+	      const singleLineString = fileContent.replace(/\t/g, '\\t').replace(/\n/g, '\\n');
+
+          // Count the number of lines in the file
+          const lineCount = (fileContent.match(/\t/g) || []).length + 1;
+
+          // Create an array of line numbers
+          const lineNumberArray = Array.from({ length: lineCount }, (_, i) => i + 1);
+
+          // Extract sent_id values from the file content
+          sentenceIds = [];
+          fileContent.split('<sent_id=')
+            .filter(part => part.includes('</sent_id>'))
+            .forEach(part => {
+              const sentId = part.split('>')[0];
+              sentenceIds.push(sentId);
+            });
+
+          
+          
+          const transposedData = transposeData(singleLineString);
+          console.log(singleLineString);
+          console.log(transposedData);
+
+          fetch('./DisplayTableServlet', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `filename=${encodeURIComponent(selectName)}&filecontent=${encodeURIComponent(transposedData)}`
+          })
+            .then(response => response.text())
+            .then(data => {
+              console.log('Received data:', data);
+
+              // Create a new table row
+              const table = document.querySelector('.assignments table');
+              const row = table.insertRow();
+
+              // Populate the row with the line number options and sent_id dropdown
+              row.innerHTML = `
+                <td id="sno">${table.rows.length}</td>
+                <td id="fname">${fileName}</td>
+                <td id="process"><button>Process</button></td>
+                <td>
+                  <select id="editor">
+                    <option>Editor1</option>
+                    <option>Editor2</option>
+                    <option>Editor3</option>
+                  </select>
+                </td>
+                <td>
+                  <select id="sentenceDropdown">
+                    ${sentenceIds.map(sentId => `<option value="${sentId}">${sentId}</option>`).join('')}
+                  </select>
+                </td>
+                <td id="line_no">
+                  <select id="lineNumberDropdown" onchange="updateSelectedLineNumbers(this)">
+                    <!-- Options will be populated dynamically -->
+                  </select>
+                  <input type="text" id="lineNumberInput" style="width: 50px; margin-left: 10px;">
+                </td>
+                <td id="assigned"><button onclick="sendData(this, 'Assigned')">Assign</button></td>
+                <td><button style="font-size: 20px;">+</button></td>
+              `;
+
+              updateLineNumbers();
+              updateSNo(table);
+            })
+            .catch(error => console.error('Error:', error));
+        };
+
+        reader.readAsText(file); // Read the file as text
+      }
+    }
+    
+   
+    function transposeData(input) {
+    	  // Split the input string based on the delimiter ".&#"
+    	  const setsOfData = input.split(".&#");
+
+    	  let transposedString = '';
+
+    	  // Transpose each set of data individually
+    	  setsOfData.forEach(set => {
+    	    const lines = set.split('\r\\n');
+    	    const transposedData = [];
+
+    	    // Process each line of the data
+    	    let firstLine = lines.shift(); // Remove the first line
+    	    let secondLine = lines.shift(); // Remove the second line
+    	    let lastLine = lines.pop(); // Remove the last line
+
+    	    // Add the first and second lines to the transposedString
+    	    transposedString += firstLine + '\\n' + secondLine + '\\n';
+
+    	    lines.forEach(line => {
+    	      // Ignore lines containing "</sent_id>"
+    	    
+    	        const rowData = line.split('\\t');
+
+    	        rowData.forEach((cell, columnIndex) => {
+    	          if (!transposedData[columnIndex]) {
+    	            transposedData[columnIndex] = [];
+    	          }
+
+    	          transposedData[columnIndex].push(cell.trim());
+    	        });
+    	      
+    	    });
+
+    	    // Construct the transposed string for this set of data
+    	    transposedData.forEach(rowData => {
+    	      transposedString += rowData.join('\\t') + '\\n';
+    	    });
+
+    	    // Add the last line to the transposedString
+    	    transposedString += lastLine;
+
+    	    // Add a delimiter to separate the transposed sets of data
+    	    transposedString += ".&#";
+    	  });
+
+    	  return transposedString;
+    	}
+
+    function updateLineNumbers() {
+      const lineNumberDropdown = document.getElementById('lineNumberDropdown');
+      const lineNumberInput = document.getElementById('lineNumberInput');
+
+      // Clear existing options
+      lineNumberDropdown.innerHTML = '';
+
+      // Populate the line number dropdown with options from the classificationNames array
+      classificationNames.forEach(name => {
+        const option = document.createElement('option');
+        option.value = name;
+        option.text = name;
+        lineNumberDropdown.add(option);
+      });
+
+      // Clear the line number input
+      lineNumberInput.value = '';
+    }
+
+    function updateSelectedLineNumbers(selectElement) {
+      const selectedLineNumber = selectElement.value;
+      const lineNumberInput = document.getElementById('lineNumberInput');
+      if (aaq === 1) {
+        lineNumberInput.value += selectedLineNumber;
+        aaq++;
+      } else {
+        lineNumberInput.value += "," + selectedLineNumber;
+        aaq++;
+      }
+    }
+	 /* 	
+      if (!selectedLineNumbers.includes(selectedLineNumber)) {
+        selectedLineNumbers.push(selectedLineNumber);
+        selectedLineNumbers.sort((a, b) => a - b);
+        lineNumberInput.value = selectedLineNumbers.join(', ');
+      } else {
+        selectedLineNumbers = selectedLineNumbers.filter(num => num !== selectedLineNumber);
+        lineNumberInput.value = selectedLineNumbers.join(', ');
+      } */
+    
+
+    function updateSNo(table) {
+      const rows = table.rows;
+      for (let i = 1; i < rows.length; i++) {
+        rows[i].cells[0].textContent = i;
+      }
+    }
+
+    function sendData(button, Assigned) {
+    	  let row = button.parentNode.parentNode;
+    	  let sno = row.cells[0].textContent;
+    	  let fname = row.cells[1].textContent;
+    	  let process = row.cells[2].textContent.trim();
+    	  let editor = row.cells[3].querySelector("#editor").value;
+    	  let assigned = Assigned;
+    	  let lineNumbers = document.getElementById('lineNumberInput').value;
+    	  let sentenceId = row.cells[4].querySelector("#sentenceDropdown").value;
+
+    	  console.log(sno);
+    	  console.log(fname);
+    	  console.log(process);
+    	  console.log(editor);
+    	  console.log(assigned);
+    	  console.log(lineNumbers);
+    	  console.log(sentenceId);
+
+    	  // Change the button text to "Assigned" after sending data
+    	  button.textContent = "Assigned";
+    	  // Disable the button after it's clicked
+    	  
+
+    	  fetch('./AdminServlet', {
+    	    method: 'POST',
+    	    headers: {
+    	      'Content-Type': 'application/x-www-form-urlencoded'
+    	    },
+    	    body: `sno=${encodeURIComponent(sno)}&fname=${encodeURIComponent(fname)}&process=${encodeURIComponent(process)}&editor=${encodeURIComponent(editor)}&sentenceId=${encodeURIComponent(sentenceId)}&lineNumbers=${encodeURIComponent(lineNumbers)}&assigned=${encodeURIComponent(assigned)}`
+    	  	
+    	  })
+    	    .then(response => response.text())
+    	    .then(data => {
+    	      console.log('Received data:', data);
+    	      // Store the data in the storedData array
+    	      storedData.push({ S_no: sno, File_name: fname, Process: process, Editor_Name: editor, Line_Numbers: lineNumbers, Sentence_Id: sentenceId, Status: assigned});
+    	      fetchDataAndPopulateTable();
+
+    	      // Reset the selectedLineNumbers array
+    	      selectedLineNumbers = [];
+    	      //document.getElementById('lineNumberInput').value = '';
+    	    })
+    	    .catch(error => console.error('Error:', error));
+    	}
+    function fetchDataAndPopulateTable() {
+    	  const table = document.querySelector('.assignments table');
+    	  // Clear existing rows from the table
+    	  table.innerHTML = `
+    	    <tr>
+    	      <th>SNo</th>
+    	      <th>File Name</th>
+    	      <th>Processing</th>
+    	      <th>Assigned To</th>
+    	      <th>Sentence Assigned</th>
+    	      <th>Line Assigned</th>
+    	      <th>Status</th>
+    	      <th>Add more</th>
+    	    </tr>
+    	  `;
+    	  // Populate the table with the data from storedData
+    	  storedData.forEach(item => {
+    	    const row = table.insertRow();
+    	    row.innerHTML = `
+    	      <td>${item.S_no}</td>
+    	      <td>${item.File_name}</td>
+    	      <td><button>${item.Process}</button></td>
+    	      <td>${item.Editor_Name}</td>
+    	      <td>${item.Sentence_Id}</td>
+    	      <td>${item.Line_Numbers}</td>
+    	      <td><button>${item.Status}</button></td>
+    	      <td><button style="font-size: 20px;" onclick="uploadFile()">+</button></td>
+    	    `;
+    	  });
+    	}
+
+    // Function to open modal
+    function openModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.style.display = "block";
+    }
+
+    // Function to close modal
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.style.display = "none";
+    }
+
+    // Function to toggle registration forms
+    function toggleRegistration(type) {
+      const adminToggle = document.getElementById('adminToggle');
+      const userToggle = document.getElementById('userToggle');
+      const adminRegistration = document.getElementById('adminRegistration');
+      const userRegistration = document.getElementById('userRegistration');
+
+      if (type === 'admin') {
+        adminToggle.classList.add('active');
+        userToggle.classList.remove('active');
+        adminRegistration.style.display = 'block';
+        userRegistration.style.display = 'none';
+      } else {
+        adminToggle.classList.remove('active');
+        userToggle.classList.add('active');
+        adminRegistration.style.display = 'none';
+        userRegistration.style.display = 'block';
+      }
+    }
+    
+ // Add event listener to the logout button
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        // Redirect to index.html
+        window.location.href = 'index.html';
+    });
+
+    </script>
+</body>
+</html>

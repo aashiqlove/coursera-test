@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+	<servlet>
+	    <servlet-name>ValidateServlet</servlet-name>
+	    <servlet-class>org.updatedtable.ValidateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>ValidateServlet</servlet-name>
+	    <url-pattern>/ValidateServlet</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+	    <servlet-name>AdminServlet</servlet-name>
+	    <servlet-class>org.updatedtable.AdminServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	    <servlet-name>AdminServlet</servlet-name>
+	    <url-pattern>/AdminServlet</url-pattern>
+	</servlet-mapping>
+
+
+<servlet>
+    <servlet-name>AdmServlet</servlet-name>
+    <servlet-class>org.updatedtable.AdminServletDb</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>AdmServlet</servlet-name>
+    <url-pattern>/AdminServletDb</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>DisTableServlet</servlet-name>
+    <servlet-class>org.updatedtable.DisplayTableServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>DisTableServlet</servlet-name>
+    <url-pattern>/DisplayTableServlet</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>FinalServlet</servlet-name>
+    <servlet-class>org.updatedtable.FinalServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>FinalServlet</servlet-name>
+    <url-pattern>/FinalServlet</url-pattern>
+</servlet-mapping>
+
+</web-app>

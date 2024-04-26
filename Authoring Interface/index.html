@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: whitesmoke;
+            font-family: Arial, sans-serif;
+        }
+
+        .head_container {
+            display: flex;
+            background-color: #7AA2E3;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .logo {
+            width: 40%;
+        }
+
+        .logo img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .headers {
+            color: #000;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            text-align: center;
+        }
+
+        .login-container {
+            margin: 50px auto;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .login-container button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="head_container">
+        <div class="logo">
+            <img src="anna_university.png" alt="Logo">
+        </div>
+        <div class="headers">
+            <h1>AUTHORING INTERFACE</h1>
+            <h4>Language Communication For End User</h4>
+            <h4>AU-KBC Research Centre</h4>
+        </div>
+    </div>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" name="loginUsername" placeholder="Username" required><br>
+            <input type="password" name="loginPassword" placeholder="Password" required><br>
+            <button type="button" onclick="getLoginData()">Login</button>
+        </form>
+    </div>
+    <script>
+        function getLoginData() {
+            const loginUsername = document.querySelector('input[name="loginUsername"]').value;
+            const loginPassword = document.querySelector('input[name="loginPassword"]').value;
+
+            fetch('./ValidateServlet?id=3', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: `loginUsername=${encodeURIComponent(loginUsername)}&loginPassword=${encodeURIComponent(loginPassword)}`
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    console.error('Error:', response.status);
+                    throw new Error('Network response was not ok');
+                }
+            })
+            .then(data => {
+                if (data.startsWith("success:")) {
+                    const findMember = data.split(":")[1];
+                    if (findMember === "Admin") {
+                        window.location.href = "fileprocessing.html";
+                    } else if (findMember === "User") {
+                       
+                        window.location.href = 'editorPage.html?stringValue='+ encodeURIComponent(loginUsername.toLowerCase());
+                    } else {
+                        console.error("Invalid findMember value:", findMember);
+                    }
+                } else if (data === "invalid") {
+                    alert("Invalid credentials");
+                } else {
+                    console.error("Unexpected response:", data);
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<!-- this code work generate table perfectly and make tha indication as color yellow and editableContent also perfectly -->
+    <meta charset="ISO-8859-1">
+    <title>editorPage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.topcontainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100px;
+    background-color: #7AA2E3;
+}
+
+.au_img {
+    margin-right: 120px; /* Adjust the spacing between image and text as needed */
+}
+
+.au_img img {
+    width: 100px;
+    height: 100px;
+    max-height: 90px;
+}
+
+.title_page {
+    text-align: center;
+    margin-left: 380px; /* Adjust the left margin as needed */
+}
+
+/* Sidebar styles */
+.sidebar {
+    position: fixed;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background: lightblue;
+    transition: all 0.5s ease;
+}
+
+.sidebar header {
+    font-size: 20px;
+    color: #6c7293;
+    line-height: 70px;
+    text-align: center;
+    background: #e3e9f7;
+    user-select: none;
+}
+
+.sidebar ul li {
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 65px;
+    font-size: 20px;
+    color: #6c7293;
+    padding-left: 40px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    transition: .4s;
+}
+
+ul li:hover  {
+    padding-left: 50px;
+    background: #e3e9f7;
+}
+
+.sidebar ul  li {
+    margin-right: 16px;
+    cursor: pointer;
+}
+
+#check {
+    display: none;
+}
+
+label #btn,label #cancel{
+
+    position: absolute;
+    left: 5px;
+    top: 17%;
+
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 29px;
+    background-color: whitesmoke;
+    box-shadow: inset 2px 2px 2px 0px rgba(255,255,255,.5),
+        inset -7px -7px 10px 0px rgba(0,0,0,.1),
+        3.5px 3.5px 20px 0px rgba(0,0,0,.1),
+        2px 2px 5px 0px rgba(0,0,0,.1);
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
+    line-height: 45px;
+    transition: all .5s ease;
+}
+label #cancel{
+    opacity: 0;
+    visibility: hidden;
+}
+#check:checked ~ .sidebar{
+    left: 0;
+}
+#check:checked ~ label #btn{
+    margin-left: 245px;
+    opacity: 0;
+    visibility: hidden;
+}
+#check:checked ~ label #cancel{
+    margin-left: 245px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.dyn_dropdown {
+    margin-top: 20px;
+    margin-left: 38%;
+}
+
+.dyn_dropdown select {
+    width: 350px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color: #fff;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.dyn_dropdown select:focus {
+    border-color: #7AA2E3;
+}
+
+.dynamic_table{
+    width: 100%;
+    max-width: 90%;
+    height: 450px;
+    display: flex;
+    margin: 20px 5%;
+    overflow: scroll;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+}
+
+.Buttons_container {
+            display: none; /* Initially hide the buttons */
+            justify-content: center; 
+            align-items: center; 
+            gap: 10px;
+            margin-top: 20px; /* Adjust the top margin as needed */
+}
+
+.Buttons_container button {
+    background-color: green; /* Set the default background color */
+    padding: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Add transition for smooth color change */
+}
+
+.Buttons_container button:hover {
+    background-color: darkgreen; /* Change the background color on hover */
+}
+#updateButton{
+	display: none;
+}
+
+.highlighted-row {
+    background-color: yellow;
+}
+.buttons_2 {
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}  
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+.log_btn {
+   margin-left: 400px;
+   margin-top:40px;
+}
+    </style>
+</head>
+<body>
+
+<!-- -------------------------------------Heading Container(start)------------------------- -->
+    <div class="topcontainer">
+        <div class="au_img">
+            <img src="anna_university.png" alt="Your Image">
+        </div>
+        <div class="title_page">
+            <h1>AUTHORING INTERFACE</h1>
+            <h4>Language Communication For End User</h4>
+            <h4>AU-KBC Reserach Centre</h4>
+        </div>
+            <div class="buttons_2">
+        <button class= "log_btn"id="logoutButton">Logout</button>
+    </div>
+    </div>
+    <!-- -------------------------------------Heading Container(end)------------------------ -->
+
+	<!-- -------------------------------------Sidebasr Container(start)--------------------- -->
+    <input type="checkbox" id="check">
+    <label for="check">
+        <i class="fas fa-bars" id="btn"></i>
+        <i class="fas fa-times" id="cancel"></i>
+    </label>
+	
+    <div class="sidebar">
+        <header>Assigned Files</header>
+        <ul id="fileList">
+            <!-- Dynamically generated list of assigned files will be inserted here -->
+        </ul>
+    </div>
+	<!-- -------------------------------------Sidebasr Container(end)------------------------ -->
+	
+	<!-- -------------------------------------DropDown Container(start)----------------------- -->
+    <div class="dyn_dropdown">
+    	<!-- <select> -->
+        <select onchange="update1234567(this.value)"> 
+            <option value="" disabled selected>Select an Assigned file</option>
+        </select>
+    </div>
+    <!-- -------------------------------------DropDown Container(end)----------------------- -->
+
+
+	<!-- -------------------------------------Dynamic Table Container(start)----------------------- -->
+    <div class="dynamic_table">
+        <table id="fileTable"></table>
+    </div>
+	<!-- -------------------------------------Dynamic Table Container(end)----------------------- -->   
+	 
+	<!-- -------------------------------------Button Container(start)----------------------- -->    
+    <div class="Buttons_container">
+        <button id="editButton">Edit</button>
+        <button id="updateButton" >Update</button>
+        <button id="mergeCellsBtn">Merge Columns</button>
+        <button id="splitCellsBtn">Split Column</button>
+        <button onclick="submit()">Submit</button>
+    </div>
+	<!-- -------------------------------------Button Container(end)----------------------- --> 
+	
+	
+    <script>
+    
+    let selectedLineNumber = ''; //blocking line number(restriction access)
+    let dropdownValue = '';    //hold the dropdown value    
+    let tableDataValue = {};    
+    let maxRows = 0;    //finding row value    
+    let colspanValue='';    
+    let sendid="";    
+    let sentance='';
+    var fileName="";
+    const objectKeyValue = {
+        "A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "H": 8
+    };
+	let commentRow="";
+    
+    (function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        window.receivedValue = urlParams.get('stringValue'); // Assign to global variable
+        console.log(window.receivedValue);
+
+        if (window.receivedValue === null || window.receivedValue === "") {
+            window.location.replace("index.html");
+        }
+    })();
+
+    
+    /*==============================Fetching Data from adminservlet for editor details================================== */
+    
+    let uniqueSentenceIdMapping = {}; // Declare an object for mapping
+
+fetch('./AdminServletDb')
+    .then(response => response.json())
+    .then(data => {
+        console.log('Fetched data:', data);
+        const assignedFiles = data.filter(item => item.Editor_Name === receivedValue);
+        const fileList = document.getElementById('fileList');
+        const dropdown = document.querySelector('.dyn_dropdown select');
+        const fileDataMap = new Map();
+        assignedFiles.forEach(file => {
+            if (!fileDataMap.has(file.File_name)) {
+                const lineNumberArray = file.Line_Numbers.split(',');
+                const lineNumbersConverted = lineNumberArray.map(char => objectKeyValue[char] || char);
+                fileDataMap.set(file.File_name, [[file.Sentence_Id, file.S_no, lineNumbersConverted]]);
+                const listItem = document.createElement('li');
+                listItem.textContent = file.File_name;
+                listItem.addEventListener('click', () => {
+                    fileName = file.File_name;
+                    const sentenceIdAndSnoAndLineNumber = fileDataMap.get(fileName);
+                    updateDropdown(sentenceIdAndSnoAndLineNumber);
+                    console.log('Sentence_Id, S_no, and Line_Number:', sentenceIdAndSnoAndLineNumber);
+
+                    fetch('./table_data.json')
+                        .then(response => response.json())
+                        .then(tableData => {
+                            if (tableData[fileName]) {
+                                for (let i = 0; i < Object.keys(tableData[fileName]).length; i++) {
+                                    const keyValue = i.toString(); // Get the key value       
+                                    const uniqueSentenceId = tableData[fileName][keyValue].split('<sent_id=')[1].split('>')[0]; // Extract unique sentence ID
+                                    uniqueSentenceIdMapping[uniqueSentenceId] = keyValue; // Map unique sentence ID to key value
+                                    tableData[fileName][keyValue].split('<sent_id=')
+                                        .filter(part => part.includes('</sent_id>'))
+                                        .forEach(part => {
+                                            const sentId = part.split('>')[0];
+                                            console.log(`Unique Sentence ID: ${sentId}, Key Value: ${keyValue}`); // Log the unique sentence ID and its key value
+
+                                            tableDataValue[sentId] = tableData[fileName][keyValue];
+                                        });
+                                }
+                            } else {
+                                console.log(`No data found for ${fileName}`);
+                            }
+
+                            const selectedSentenceId = dropdown.value;
+                            console.log(selectedSentenceId);
+                            if (selectedSentenceId) {
+                            	sentance=uniqueSentenceIdMapping[selectedSentenceId];
+                                update1234567(selectedSentenceId);
+                                
+                            }
+                        })
+                        .catch(error => console.error('Error fetching table data:', error));
+                    document.getElementById('check').checked = false;
+                });
+
+                fileList.appendChild(listItem);
+            } else {
+                const lineNumberArray = file.Line_Numbers.split(',');
+                const lineNumbersConverted = lineNumberArray.map(char => objectKeyValue[char] || char);
+                fileDataMap.get(file.File_name).push([file.Sentence_Id, file.S_no, lineNumbersConverted]);
+            }
+        });
+    })
+    .catch(error => console.error('Error fetching data:', error));
+
+
+
+    /*  */
+
+    function updateDropdown(sentenceIdAndSnoAndLineNumber) {
+    const dropdown = document.querySelector('.dyn_dropdown select');
+    dropdown.innerHTML = '';
+
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Select an Assigned file';
+    defaultOption.disabled = true;
+    defaultOption.selected = true;
+    dropdown.appendChild(defaultOption);
+
+    const sentenceIdLineNumbers = new Map();
+
+    sentenceIdAndSnoAndLineNumber.forEach(([sentenceId, sno, lineNumberArray]) => {
+        if (!sentenceIdLineNumbers.has(sentenceId)) {
+            sentenceIdLineNumbers.set(sentenceId, new Set());
+        }
+        lineNumberArray.forEach(lineNumber => {
+            sentenceIdLineNumbers.get(sentenceId).add(lineNumber);
+        });
+    });
+
+    for (const [sentenceId, lineNumbers] of sentenceIdLineNumbers) {
+        const option = document.createElement('option');
+        option.value = sentenceId;
+        option.textContent = `${sentenceId}`;
+        option.dataset.sno = sentenceIdAndSnoAndLineNumber.find(([id]) => id === sentenceId)[1];
+        option.dataset.lineNumber = Array.from(lineNumbers).join(',');
+        dropdown.appendChild(option);
+    }
+
+    // Add this code to select the first option by default
+    if (dropdown.options.length > 1) {
+        dropdown.options[1].selected = true;
+        const selectedSentenceId = dropdown.options[1].value;
+        const selectedOption = dropdown.options[1];
+        const sno = selectedOption.dataset.sno;
+        selectedLineNumber = selectedOption.dataset.lineNumber;
+        console.log(`Sentence_Id: ${selectedSentenceId}, S_no: ${sno}, Line_Number: ${selectedLineNumber}`);
+        dropdownValue=selectedSentenceId;
+        console.log(selectedSentenceId);
+        console.log(dropdownValue);
+        console.log(uniqueSentenceIdMapping[dropdownValue]);
+        sentance=uniqueSentenceIdMapping[dropdownValue];
+        console.log(sentance);
+        update1234567(selectedSentenceId); 
+        
+    }
+
+    dropdown.addEventListener('change', () => {
+        dropdownValue = dropdown.value;
+        const selectedSentenceId = dropdown.value;
+        
+        if (selectedSentenceId) {
+            const selectedOption = dropdown.options[dropdown.selectedIndex];
+            const sno = selectedOption.dataset.sno;
+            selectedLineNumber = selectedOption.dataset.lineNumber;
+            console.log(`Sentence_Id: ${selectedSentenceId}, S_no: ${sno}, Line_Number: ${selectedLineNumber}`);
+            sentance=uniqueSentenceIdMapping[selectedSentenceId];
+            update1234567(selectedSentenceId); 
+            
+        }
+    });
+}
+
+    function update1234567(selectedSentenceId) {
+        const tableData = tableDataValue[selectedSentenceId];
+        if (tableData) {
+            const table = document.getElementById('fileTable');
+            table.innerHTML = ''; // Clear existing table content
+
+            // Split the table data into lines
+            const lines = tableData.split('\\n');
+
+            // Calculate the maximum number of columns in the table
+            const maxColumns = lines.reduce((max, line) => {
+                const columns = line.split('\\t');
+                return Math.max(max, columns.length);
+            }, 0);
+
+            // Create the table header (thead) element
+            const thead = document.createElement('thead');
+
+            // Loop through each line of the table data
+            for (let i = 1; i < lines.length - 1; i++) {
+                sendid = lines[0];
+                // Split the line into individual cells using '\t' (tab) as the delimiter
+                const columns = lines[i].split('\\t');
+
+                // Create a new row element for the table
+                const row = document.createElement('tr');
+
+                // Loop through each cell in the line and create a corresponding table cell element
+                columns.forEach((column, index) => {
+                    const cell = (i === 1) ? document.createElement('th') : document.createElement('td');
+                    cell.textContent = column; // Set the content of the cell to the column data
+                    cell.contentEditable = false; // Make all cells editable
+                    row.appendChild(cell); // Append the cell to the current row
+                });
+
+                // Append the row to the table or thead based on the current iteration
+                if (i === 1) {
+                    thead.appendChild(row); // Append the row to the thead
+                } else {
+                    table.appendChild(row); // Append the row to the table body
+                }
+
+                // If it's the first row, set colspan for the first cell
+                if (i === 1) {
+                    const firstCell = document.createElement('th');
+                    firstCell.textContent = columns[0]; // Set the content of the cell to the first column data
+                    firstCell.colSpan = maxColumns; // Set colspan to cover all columns
+                    row.innerHTML = ''; // Clear existing content
+                    row.appendChild(firstCell); // Append the cell to the current row
+                }
+            }
+
+            // Append the thead to the table
+            table.appendChild(thead);
+
+            // Display the buttons container
+            const buttonsContainer = document.querySelector('.Buttons_container');
+            buttonsContainer.style.display = 'flex';
+
+            // Fill in empty cells separately
+            fillEmptyCells(table, maxColumns);
+
+            // Highlight the selected rows
+            highlightSelectedRows(selectedLineNumber);
+
+            // Check if a comment row already exists with the username "editor1"
+            // Check if a comment row already exists with the username "editor1"
+			let commentRow = null;
+			const rows = table.getElementsByTagName('tr');
+			for (let i = 0; i < rows.length; i++) {
+			    const cells = rows[i].getElementsByTagName('td');
+			    for (let j = 0; j < cells.length; j++) {
+			        if (cells[j].textContent.includes('comments:')) {
+			            commentRow = rows[i];
+			            commentRow.id = 'commentRow'; // Set the ID of the existing row to 'commentRow'
+			            // If comment row already exists, make its content editable
+			            const commentCells = commentRow.getElementsByTagName('td');
+			            for (let k = 0; k < commentCells.length; k++) {
+			                commentCells[k].contentEditable = true;
+			            }
+			            break;
+			        }
+			    }
+			    if (commentRow) {
+			        break;
+			    }
+			}
+
+
+            // If a comment row with "editor1" username doesn't exist, create it
+            if (!commentRow) {
+                commentRow = document.createElement('tr');
+                commentRow.id = 'commentRow'; // Set a specific ID for the comment row
+
+                // Add cells to the comment row
+                for (let i = 0; i < maxColumns; i++) {
+                    const cell = document.createElement('td');
+                    cell.contentEditable = true; // Make comment row cells editable
+                    cell.textContent = `comments:`;
+
+                    // Add event listeners for focus and blur events to handle placeholder behavior
+                    cell.addEventListener('focus', function() {
+                        if (this.textContent === `comments:`) {
+                            this.style.color = 'black'; // Change text color to black when editing
+                        }
+                    });
+                    cell.addEventListener('blur', function() {
+                        if (this.textContent === '') {
+                            this.textContent = `comments:`;
+                            this.style.color = 'gray'; // Change text color to gray when placeholder text is restored
+                        }
+                    });
+
+                    // Set initial text color to gray
+                    cell.style.color = 'gray';
+
+                    commentRow.appendChild(cell);
+                }
+
+                table.appendChild(commentRow);
+            }
+        } else {
+            // Log an error message if no table data is found for the selected sentence ID
+            console.log(`No table data found for ${selectedSentenceId}`);
+        }
+    }
+
+
+ 
+    function highlightSelectedRows(selectedLineNumber) {
+        const tableRows = document.querySelectorAll('#fileTable tr');
+        const editContent = selectedLineNumber.split(',').map(Number);
+        tableRows.forEach((row, index) => {
+            const rowNumber = index+1; // Adjust index because first row is header
+            if (editContent.includes(rowNumber)) {
+                row.classList.add('highlighted-row'); // Add the CSS class to highlight the row
+            } else {
+                row.classList.remove('highlighted-row'); // Remove the CSS class to unhighlight the row
+            }
+        });
+    }
+
+    function fillEmptyCells(table, maxColumns) {
+        // Get all rows of the table
+        const rows = table.querySelectorAll('tr');
+
+        // Loop through each row starting from the second row
+        for (let i = 1; i < rows.length; i++) {
+            const row = rows[i];
+
+            // Check if the current row is a header row
+            const isHeaderRow = row.parentElement.tagName.toLowerCase() === 'thead';
+
+            // If it's not a header row, fill empty cells
+            if (!isHeaderRow) {
+                // Get the cells of the current row
+                const cells = row.querySelectorAll('td');
+
+                // If the number of cells is less than the maximum number of columns
+                if (cells.length < maxColumns) {
+                    // Calculate the number of empty cells needed
+                    const emptyCellCount = maxColumns - cells.length;
+
+                    // Create and append empty cells to the row
+                    for (let j = 0; j < emptyCellCount; j++) {
+                        const emptyCell = document.createElement('td');
+                        row.appendChild(emptyCell);
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+    document.getElementById('editButton').addEventListener('click', () => {
+        const tableRows = document.querySelectorAll('#fileTable tr');
+        const editContent = selectedLineNumber.split(',').map(Number);
+        tableRows.forEach((row, index) => {
+            const rowNumber = index + 1; // Adjust index because first row is header
+            const cells = row.querySelectorAll('td');
+            if (editContent.includes(rowNumber)) {
+                cells.forEach(cell => {
+                    cell.contentEditable = true;
+                });
+            } else {
+                cells.forEach(cell => {
+                    cell.contentEditable = false;
+                });
+                
+            }
+        });
+        const commentCells = document.querySelectorAll('#commentRow td');
+        commentCells.forEach(cell => {
+            cell.contentEditable = true;
+        });
+        document.getElementById('editButton').style.display = "none";
+        document.getElementById('updateButton').style.display = "block";
+    });
+
+    
+    document.getElementById('updateButton').addEventListener('click', function() {
+        const cells = document.querySelectorAll('table td');
+        const updatedData = {};
+        cells.forEach(cell => {
+            cell.contentEditable = false;
+
+        });
+        document.getElementById('editButton').style.display="block"; 
+        document.getElementById('updateButton').style.display="none";
+            console.log(updatedData);           
+    });
+
+    
+    
+    
+    let newRowCreated = false;
+    function generateRow() {
+        const tableContainer = document.querySelector('.dynamic_table');
+        const table = tableContainer.querySelector('table');
+        const table123456 = tableContainer.querySelector('table').outerHTML;
+        let parsedTable = new DOMParser().parseFromString(table123456, 'text/html');
+        let asdc = parsedTable.querySelectorAll('tr')[1];
+        let asdcLength = asdc.querySelectorAll('td').length;
+        length=asdcLength;
+        
+        if (!newRowCreated && table) {
+            const newRow = table.insertRow();
+            newRowCreated = true;
+
+            // Add cells to the new row
+            for (let i = 0; i < length; i++) { // Adjusted length to 3 for this example
+                const cell = newRow.insertCell();
+                cell.contentEditable = false;
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                cell.appendChild(checkbox);
+            }
+        } else {
+            console.error('A row already exists.');
+        }
+    }
+
+    function mergeSelectedCells() {
+        const tableContainer = document.querySelector('.dynamic_table');
+        const table = tableContainer.querySelector('table');
+        
+        if (table) {
+            const selectedIndices = [];
+            const checkboxes = table.querySelectorAll('td input[type="checkbox"]');
+
+            checkboxes.forEach((checkbox, index) => {
+                if (checkbox.checked) {
+                    selectedIndices.push(index);
+                }
+            });
+
+            if (selectedIndices.length > 0) {
+                const selectedValues = [];
+                const rows = table.rows;
+                let mergedValue;
+                for (let i = 1; i < rows.length; i++) {
+                    const row = rows[i];
+                     mergedValue = '';
+
+                     selectedIndices.forEach((index, i) => {
+                    	  const cell = row.cells[index];
+                    	  mergedValue += cell.textContent.trim();
+
+                    	  // Add the "/" character only if it's not the last index
+                    	  if (i < selectedIndices.length - 1) {
+                    	    mergedValue += ',';
+                    	  }
+                    	});
+
+                    selectedValues.push(mergedValue.trim());
+                }
+
+                mergeColumns(selectedValues, selectedIndices);
+
+                // Remove the generated row
+                if (newRowCreated) {
+                    table.deleteRow(table.rows.length - 1); // Delete the last row
+                    newRowCreated = false; // Reset newRowCreated after deleting the row
+                }
+            } else {
+                alert('No checkboxes are selected.');
+            }
+        } else {
+            console.error('No table found.');
+        }
+    }
+
+    function mergeColumns(values, columnIndices) {
+        const tableContainer = document.querySelector('.dynamic_table');
+        const table = tableContainer.querySelector('table');
+
+        if (table && table.rows.length > 0) {
+            const rows = table.rows;
+
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                const firstCell = row.cells[columnIndices[0]];
+
+                if (firstCell) {
+                    let mergedValue = values[i - 1];
+
+                    for (let j = columnIndices.length - 1; j >= 1; j--) {
+                        const cellToMerge = row.cells[columnIndices[j]];
+
+                        if (cellToMerge) {
+                            cellToMerge.remove();
+                        }
+                    }
+
+                    firstCell.textContent = mergedValue;
+                   /*  firstCell.colSpan = columnIndices.length; */
+                }
+            }
+        } else {
+            console.error('No table found or the table is empty.');
+        }
+    }
+
+    function handleMergeButtonClick() {
+        if (!newRowCreated) {
+            generateRow();
+        } else {
+            mergeSelectedCells();
+        }
+         //document.getElementById('editButton').style.display = 'none';
+        const commentCells = document.querySelectorAll('#commentRow td');
+        commentCells.forEach(cell => {
+            cell.contentEditable = true;
+        });
+    }
+
+    document.getElementById('mergeCellsBtn').onclick = handleMergeButtonClick;
+    
+    
+    
+    
+    let isNewRowCreated = false;
+
+    function generateRow1() {
+        const tableContainer = document.querySelector('.dynamic_table');
+        const table = tableContainer.querySelector('table');
+        const table123456 = tableContainer.querySelector('table').outerHTML;
+        let parsedTable = new DOMParser().parseFromString(table123456, 'text/html');
+        let asdc = parsedTable.querySelectorAll('tr')[1];
+        let asdcLength = asdc.querySelectorAll('td').length;
+        length=asdcLength;
+        
+        if (!isNewRowCreated && table) {
+            const newRow = table.insertRow();
+            isNewRowCreated = true;
+            const rows = table.rows;
+            for (let i = 1; i <=1; i++) {
+                const row = rows[i];
+                rows[i].contentEditable = true;
+             }
+            // Add cells to the new row
+            for (let i = 0; i < length; i++) {
+                const cell = newRow.insertCell();
+                cell.contentEditable = false;
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                cell.appendChild(checkbox);
+            }
+        } else {
+            console.error('A row already exists.');
+        }
+    }
+    function splitSelectedColumn() {
+        const tableContainer = document.querySelector('.dynamic_table');
+        const table = tableContainer.querySelector('table');
+
+        if (table) {
+            const selectedIndices = [];
+            const checkboxes = table.querySelectorAll('td input[type="checkbox"]');
+
+            checkboxes.forEach((checkbox, index) => {
+                if (checkbox.checked) {
+                    selectedIndices.push(index);
+                }
+            });
+
+            if (selectedIndices.length === 1) {
+                const selectedIndex = selectedIndices[0];
+
+                const rows = table.rows;
+                for (let i = 1; i < rows.length; i++) {
+                    const row = rows[i];
+                    row.contentEditable = true;
+                    const cell = row.cells[selectedIndex];
+                    const cellValue = cell.textContent.trim();
+
+                    if (cellValue.includes('/')) {
+                        const parts = cellValue.split('/');
+                        for (let j = 0; j < parts.length; j++) {
+                            const newCell = row.insertCell(selectedIndex + j + 1);
+                            newCell.textContent = parts[j].trim();
+                            newCell.contentEditable = true;
+                        }
+                        // Duplicate the cell values in the split cells
+                        for (let k = 0; k < parts.length; k++) {
+                            row.cells[selectedIndex + k + 1].textContent = parts[k].trim();
+                        }
+                        row.cells[selectedIndex].remove();
+                    } else {
+                        // If the cell does not contain a "/", create a new cell with the same value
+                        const newCell = row.insertCell(selectedIndex + 1);
+                        newCell.textContent = cellValue;
+                        newCell.contentEditable = false;
+                    }
+                }
+
+                // Remove the generated row
+                if (isNewRowCreated) {
+                    table.deleteRow(table.rows.length - 1); // Delete the last row
+                    isNewRowCreated = false; // Reset isNewRowCreated after deleting the row
+                }
+            } else {
+                console.error('Please select a single column to split.');
+            }
+        } else {
+            console.error('No table found.');
+        }
+    }
+
+    document.getElementById('splitCellsBtn').addEventListener('click', function() {
+        if (!isNewRowCreated) {
+            generateRow1();
+        } else {
+            splitSelectedColumn();
+        }
+
+        // Set contentEditable to true for cells in the first row after the split function completes
+        const firstRowCells = document.querySelectorAll('table tr:first-child td');
+        firstRowCells.forEach(cell => {
+            cell.contentEditable = true; // Set contentEditable to true for each cell in the first row
+        });
+        
+        
+        const commentCells = document.querySelectorAll('#commentRow td');
+        commentCells.forEach(cell => {
+            cell.contentEditable = true;
+        });
+    });
+
+
+
+    
+    
+    function submit() {
+        const cells = document.querySelectorAll('table td, table th');
+        const updatedData = {};
+
+        cells.forEach(cell => {
+            const rowIndex = cell.parentNode.rowIndex;
+            const cellIndex = cell.cellIndex;
+
+            if (!updatedData[rowIndex]) {
+                updatedData[rowIndex] = {};
+            }
+
+            updatedData[rowIndex][cellIndex] = cell.textContent;
+
+            // Make the cell non-editable
+            cell.contentEditable = false;
+        });
+        const commentCells = document.querySelectorAll('#commentRow td');
+        commentCells.forEach(cell => {
+            cell.contentEditable = true;
+        });
+        console.log(updatedData);
+
+        let updatedata = "";
+        updatedata += sendid + "\\n"; // Add a newline after sendid
+
+        for (const property in updatedData) {
+            let isFirstCell = true; // Flag to check if it's the first cell in the row
+            for (const property1 in updatedData[property]) {
+                if (!isFirstCell) {
+                    updatedata += "\\t"; // Separate cell values with \t, except for the first cell in the row
+                }
+                updatedata += updatedData[property][property1];
+                isFirstCell = false; // Update flag
+            }
+            updatedata += "\\n"; // Separate rows with \n
+        }
+
+        updatedata += "</sent_id>";
+
+        console.log(updatedata);
+       
+        console.log(sentance);
+
+        // Send updatedata to the FinalServlet
+        fetch('./FinalServlet', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `fileName=${encodeURIComponent(fileName)}&updatedata=${encodeURIComponent(updatedata)}&sentance=${encodeURIComponent(sentance)}`
+        })
+        .then(response => {
+            console.log('Servlet response:', response.status);
+            alert("Data Saved");
+            /* setTimeout(() => {
+                location.reload(); // Refresh the page after clicking OK on the alert
+            }, 500); // Reload after 1 second (adjust as needed) */
+            
+            /* fetch function */
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+    
+
+    // Add event listener to the logout button
+    document.getElementById('logoutButton').addEventListener('click', function() {
+        // Redirect to index.html
+        window.location.href = 'index.html';
+    });
+
+ 
+ 
+    
+
+    </script>
+
+    </body>
+    </html>
