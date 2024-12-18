@@ -77,10 +77,19 @@
       // Add markers for departments
       Object.entries(DEPARTMENT_LOCATIONS).forEach(([dept, coords]) => {
         const marker = L.marker(coords, { title: dept }).addTo(map);
-        marker.bindPopup(`<b>${dept}</b>`);
+
+        marker.bindPopup(
+          `<b>${dept}</b><br><a href="#" onclick="openGoogleMaps('${coords[0]}', '${coords[1]}')">Get Directions</a>`
+        );
       });
 
-      // Function to locate user
+      // Function to open Google Maps
+      function openGoogleMaps(lat, lng) {
+        const gmapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+        window.open(gmapsUrl, "_blank");
+      }
+
+      // Locate user and add marker
       function locateUser() {
         if (!navigator.geolocation) {
           alert("Geolocation is not supported by your browser.");
@@ -89,35 +98,23 @@
         navigator.geolocation.getCurrentPosition(
           (position) => {
             userLocation = [position.coords.latitude, position.coords.longitude];
-            
-            // Clear previous user marker if exists
-            map.eachLayer((layer) => {
-              if (layer.options && layer.options.title === "You are here") {
-                map.removeLayer(layer);
-              }
-            });
-
-            // Add new user marker
             L.marker(userLocation, { title: "You are here" })
               .addTo(map)
               .bindPopup("<b>You are here!</b>")
               .openPopup();
-            
             map.setView(userLocation, 17);
-
-            // Share location with Android app
-            if (window.AndroidLocationBridge) {
-              window.AndroidLocationBridge.shareLocation(
-                position.coords.latitude, 
-                position.coords.longitude
-              );
-            }
           },
           () => {
             alert("Unable to retrieve your location.");
           }
         );
       }
+
+      // Automatically locate the user on page load
+      document.addEventListener("DOMContentLoaded", locateUser);
+
+      // Button to manually locate user
+      document.getElementById("locate-me").addEventListener("click", locateUser);
 
       // Get Route button
       document.getElementById("route-button").addEventListener("click", () => {
@@ -132,28 +129,9 @@
         }
 
         const [endLat, endLng] = DEPARTMENT_LOCATIONS[endDept];
-        
-        // Try to open Google Maps directly in WebView
         const gmapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${userLocation[0]},${userLocation[1]}&destination=${endLat},${endLng}`;
-        
-        // If Android bridge exists, try to handle routing through the app
-        if (window.AndroidLocationBridge && typeof window.AndroidLocationBridge.openGoogleMaps === 'function') {
-          window.AndroidLocationBridge.openGoogleMaps(
-            userLocation[0], 
-            userLocation[1], 
-            endLat, 
-            endLng
-          );
-        } else {
-          // Fallback to opening in browser
-          window.open(gmapsUrl);
-        }
+        window.open(gmapsUrl, "_blank");
       });
-
-      // Automatically locate the user on page load
-      locateUser();
-
-      // Button to manually locate user
-      document.getElementById("locate-me").addEventListener("click", locateUser);
     </script>
-  </body></html>
+  </body>
+</html>
